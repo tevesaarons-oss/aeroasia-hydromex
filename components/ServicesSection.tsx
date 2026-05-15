@@ -149,7 +149,7 @@ export function ServicesSection() {
   const activePhase = SERVICE_PHASE[selected.title] ?? "DESIGN";
 
   return (
-    <section id="services" className="relative scroll-mt-20 py-14 sm:py-20">
+    <section id="services" className="relative scroll-mt-20 overflow-hidden py-14 sm:py-20">
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-cyan/30 to-transparent" />
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading

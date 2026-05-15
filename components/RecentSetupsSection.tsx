@@ -36,7 +36,7 @@ export function RecentSetupsSection() {
   const secondary = rest[0];
 
   return (
-    <section className="relative scroll-mt-20 py-14 sm:py-20">
+    <section className="relative scroll-mt-20 overflow-hidden py-14 sm:py-20">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-blueprint opacity-30" />
       <div className="pointer-events-none absolute -left-32 top-1/4 -z-10 h-[420px] w-[420px] rounded-full bg-cyan/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 top-1/2 -z-10 h-[420px] w-[420px] rounded-full bg-electric/10 blur-3xl" />

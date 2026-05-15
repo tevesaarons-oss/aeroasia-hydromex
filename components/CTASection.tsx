@@ -4,7 +4,7 @@ import { CONTACT } from "@/lib/data";
 
 export function CTASection() {
   return (
-    <section className="relative py-16 sm:py-20">
+    <section className="relative overflow-hidden py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-navy-2 via-navy to-navy-2 p-8 sm:p-14">

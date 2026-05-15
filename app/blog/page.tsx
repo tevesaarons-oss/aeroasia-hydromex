@@ -26,8 +26,8 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-24 sm:pt-28">
-        <section className="relative scroll-mt-20 py-10 sm:py-14">
+      <main className="max-w-full overflow-x-clip pt-24 sm:pt-28">
+        <section className="relative scroll-mt-20 overflow-hidden py-10 sm:py-14">
           <div className="pointer-events-none absolute inset-0 -z-10 bg-blueprint-fine opacity-30" />
           <div className="pointer-events-none absolute -left-32 top-1/3 -z-10 h-[420px] w-[420px] rounded-full bg-cyan/10 blur-3xl" />
           <div className="pointer-events-none absolute -right-32 top-1/2 -z-10 h-[420px] w-[420px] rounded-full bg-electric/10 blur-3xl" />

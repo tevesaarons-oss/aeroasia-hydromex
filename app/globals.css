@@ -37,13 +37,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Horizontal-overflow guard. iOS Safari is unreliable when the guard
+   lives only on <body> — applying it to <html> as well prevents the
+   pinch-zoom-out gesture from revealing decorative blurs and rounded
+   corners that extend past the viewport. `clip` is preferred over
+   `hidden` because it does not break position: sticky descendants. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
 }
 
 ::selection {

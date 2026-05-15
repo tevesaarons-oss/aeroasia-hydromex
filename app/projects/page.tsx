@@ -13,7 +13,7 @@ export default function ProjectsPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-24 sm:pt-28">
+      <main className="max-w-full overflow-x-clip pt-24 sm:pt-28">
         <ProjectsTimeline />
       </main>
       <Footer />

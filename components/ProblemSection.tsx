@@ -36,7 +36,7 @@ const LEVEL_COLOR = {
 
 export function ProblemSection() {
   return (
-    <section className="relative scroll-mt-20 py-14 sm:py-20">
+    <section className="relative scroll-mt-20 overflow-hidden py-14 sm:py-20">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -left-40 top-1/4 h-[420px] w-[420px] rounded-full bg-amber-500/8 blur-3xl" />
         <div className="absolute -right-40 top-1/2 h-[420px] w-[420px] rounded-full bg-rose-500/8 blur-3xl" />

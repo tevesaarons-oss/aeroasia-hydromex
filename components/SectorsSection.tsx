@@ -117,7 +117,7 @@ export function SectorsSection() {
   const tilesBySector = new Map(TILES.map((t) => [t.title, t]));
 
   return (
-    <section id="sectors" className="relative scroll-mt-20 py-14 sm:py-20">
+    <section id="sectors" className="relative scroll-mt-20 overflow-hidden py-14 sm:py-20">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-blueprint-fine opacity-30" />
       <div className="pointer-events-none absolute -left-32 top-1/3 -z-10 h-[420px] w-[420px] rounded-full bg-cyan/8 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 top-1/4 -z-10 h-[420px] w-[420px] rounded-full bg-electric/8 blur-3xl" />

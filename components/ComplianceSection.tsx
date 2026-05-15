@@ -14,7 +14,7 @@ import { COMPLIANCE_POINTS } from "@/lib/data";
 
 export function ComplianceSection() {
   return (
-    <section className="relative scroll-mt-20 py-14 sm:py-20">
+    <section className="relative scroll-mt-20 overflow-hidden py-14 sm:py-20">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-blueprint-fine opacity-25" />
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8">

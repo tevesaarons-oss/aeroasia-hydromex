@@ -58,9 +58,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${sora.variable} h-full scroll-pt-[84px] antialiased`}
+      className={`${inter.variable} ${sora.variable} h-full max-w-full overflow-x-clip scroll-pt-[84px] antialiased`}
     >
-      <body className="min-h-full bg-radial-navy text-clean">{children}</body>
+      <body className="min-h-full max-w-full overflow-x-clip bg-radial-navy text-clean">
+        {children}
+      </body>
     </html>
   );
 }

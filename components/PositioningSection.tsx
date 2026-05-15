@@ -32,7 +32,7 @@ const STAGES: Stage[] = [
 
 export function PositioningSection() {
   return (
-    <section className="relative scroll-mt-20 py-14 sm:py-20">
+    <section className="relative scroll-mt-20 overflow-hidden py-14 sm:py-20">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-blueprint-fine opacity-30" />
       <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[420px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-electric/10 blur-3xl" />
 

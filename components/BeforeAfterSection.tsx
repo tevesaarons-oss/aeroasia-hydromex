@@ -8,7 +8,7 @@ import { mediaAssets } from "@/lib/media";
 
 export function BeforeAfterSection() {
   return (
-    <section className="relative py-14 sm:py-20">
+    <section className="relative overflow-hidden py-14 sm:py-20">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-blueprint-fine opacity-25" />
       <div className="pointer-events-none absolute -left-32 top-1/3 -z-10 h-[420px] w-[420px] rounded-full bg-electric/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 top-1/4 -z-10 h-[420px] w-[420px] rounded-full bg-ice/8 blur-3xl" />

@@ -7,7 +7,7 @@ import { mediaAssets } from "@/lib/media";
 
 export function FieldOpsSection() {
   return (
-    <section className="relative py-14 sm:py-20">
+    <section className="relative overflow-hidden py-14 sm:py-20">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-blueprint-fine opacity-25" />
       <div className="pointer-events-none absolute left-1/2 top-1/3 -z-10 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-cyan/8 blur-3xl" />
 

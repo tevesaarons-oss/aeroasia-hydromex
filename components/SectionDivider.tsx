@@ -20,25 +20,30 @@ type Props = {
  */
 export function SectionDivider({ stage, label, annotation, className }: Props) {
   return (
-    <div className={cn("relative", className)} aria-hidden="true">
+    <div
+      className={cn("relative max-w-full overflow-hidden", className)}
+      aria-hidden="true"
+    >
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="relative flex items-center gap-3 py-6 sm:gap-5 sm:py-8">
           {/* Left flow line — pipe segment with a cap dot */}
-          <div className="relative flex flex-1 items-center gap-2">
+          <div className="relative flex min-w-0 flex-1 items-center gap-2">
             <span className="size-1.5 shrink-0 rounded-full bg-cyan/55 shadow-[0_0_6px_1px_rgba(0,200,255,0.45)]" />
-            <span className="h-px flex-1 bg-gradient-to-r from-cyan/45 via-cyan/20 to-transparent" />
+            <span className="h-px min-w-0 flex-1 bg-gradient-to-r from-cyan/45 via-cyan/20 to-transparent" />
           </div>
 
-          {/* Station chip */}
-          <div className="flex items-center gap-2.5 rounded-full border border-cyan/30 bg-navy-2/75 px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] backdrop-blur">
-            <span className="text-silver/85">Stage&nbsp;{stage}</span>
+          {/* Station chip — wraps text gracefully on narrow viewports */}
+          <div className="flex max-w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-1 rounded-2xl border border-cyan/30 bg-navy-2/75 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] backdrop-blur sm:rounded-full sm:px-3.5">
+            <span className="whitespace-nowrap text-silver/85">
+              Stage&nbsp;{stage}
+            </span>
             <span className="text-cyan/45">·</span>
             <span className="text-cyan/95">{label}</span>
           </div>
 
           {/* Right flow line — mirrored, with directional cap */}
-          <div className="relative flex flex-1 items-center gap-2">
-            <span className="h-px flex-1 bg-gradient-to-l from-cyan/45 via-cyan/20 to-transparent" />
+          <div className="relative flex min-w-0 flex-1 items-center gap-2">
+            <span className="h-px min-w-0 flex-1 bg-gradient-to-l from-cyan/45 via-cyan/20 to-transparent" />
             <span className="relative size-2 shrink-0">
               <span className="absolute inset-0 rotate-45 border-r border-t border-cyan/60" />
             </span>
@@ -47,7 +52,7 @@ export function SectionDivider({ stage, label, annotation, className }: Props) {
 
         {/* Optional sub-label, sits under the station chip in faint type */}
         {annotation && (
-          <div className="-mt-3 mb-1 text-center font-mono text-[9px] uppercase tracking-[0.22em] text-silver/55">
+          <div className="-mt-3 mb-1 text-balance text-center font-mono text-[9px] uppercase tracking-[0.22em] text-silver/55">
             {annotation}
           </div>
         )}

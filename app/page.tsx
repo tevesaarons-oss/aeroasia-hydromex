@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="max-w-full overflow-x-clip">
         <Hero />
         <ProofStrip />
         <ProblemSection />

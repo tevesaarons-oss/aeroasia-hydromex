@@ -11,7 +11,7 @@ import {
 
 export function TechnologySection() {
   return (
-    <section id="technology" className="relative scroll-mt-20 py-20 sm:py-24">
+    <section id="technology" className="relative scroll-mt-20 overflow-hidden py-20 sm:py-24">
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-cyan/40 to-transparent" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-blueprint opacity-30" />
       <div className="pointer-events-none absolute -left-40 top-1/3 -z-10 h-[400px] w-[400px] rounded-full bg-electric/10 blur-3xl" />
