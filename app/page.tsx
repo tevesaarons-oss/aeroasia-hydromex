@@ -14,6 +14,7 @@ import { AboutSection } from "@/components/AboutSection";
 import { ComplianceSection } from "@/components/ComplianceSection";
 import { CTASection } from "@/components/CTASection";
 import { ContactSection } from "@/components/ContactSection";
+import { FacebookMarketingSection } from "@/components/FacebookMarketingSection";
 import { SectionDivider } from "@/components/SectionDivider";
 import { Footer } from "@/components/Footer";
 import {
@@ -78,6 +79,13 @@ export default function Home() {
           annotation="From sector coverage to 49 named projects across the Philippines"
         />
         <ProjectsTimeline />
+
+        <SectionDivider
+          stage="06"
+          label="Active Marketing Channel"
+          annotation="From past projects to live updates on the A. Hydromex Facebook page"
+        />
+        <FacebookMarketingSection />
 
         <AboutSection />
         <ComplianceSection />

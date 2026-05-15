@@ -416,17 +416,25 @@ export const NAV_LINKS = [
 ];
 
 export const CONTACT = {
-  primaryEmail: "info@aeroasiahydromex.com",
-  emails: [
-    "info@aeroasiahydromex.com",
-    "aerorandd@gmail.com",
-    "sales.aeroasiahydromex@gmail.com",
-    "aeroasiahydromex@yahoo.com",
-  ],
-  phones: ["+63 976 112 9515", "+63 961 726 5158"],
-  satelliteOffice: "049 566 8330",
-  address:
-    "Poblacion Room 306 ETG Building, A. Mabini St., San Pedro, Laguna",
+  primaryEmail: "payganejrphilip@gmail.com",
+  /** Display phone, as shown on the Facebook business page. */
+  phone: "0906 788 7601",
+  /** E.164 form for tel: and wa.me/ URLs. */
+  phoneE164: "+639067887601",
+  whatsappDisplay: "+63 906 788 7601",
+};
+
+/**
+ * A. Hydromex STP & AOP Wastewater Solutions PH — active Facebook business
+ * presence. This is the primary marketing channel; the website routes leads
+ * toward Messenger, WhatsApp, and the email above.
+ */
+export const SOCIAL = {
+  pageName: "A. Hydromex STP & AOP Wastewater Solutions PH",
+  facebookUrl: "https://www.facebook.com/AHydromexSTP",
+  messengerUrl: "https://m.me/AHydromexSTP",
+  whatsappUrl: "https://wa.me/639067887601",
+  emailUrl: "mailto:payganejrphilip@gmail.com",
 };
 
 export { Lightbulb };

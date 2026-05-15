@@ -1,6 +1,7 @@
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { CONTACT } from "@/lib/data";
+import { SOCIAL } from "@/lib/data";
+import { FacebookIcon, WhatsAppIcon } from "./BrandIcons";
 
 export function CTASection() {
   return (
@@ -28,25 +29,37 @@ export function CTASection() {
                 <p className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-silver/95">
                   Whether you&rsquo;re building a new facility, rehabilitating
                   an aging STP, preparing for DENR sampling, or exploring AOP
-                  upgrades &mdash; Aeroasia-Hydromex can help engineer the right
-                  path forward.
+                  upgrades &mdash; reach the team directly on Messenger or
+                  WhatsApp for the fastest reply.
                 </p>
               </div>
 
               <div className="flex flex-col gap-3">
                 <a
-                  href="#contact"
+                  href={SOCIAL.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-primary inline-flex h-13 items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold"
                 >
-                  Book a Consultation
+                  <FacebookIcon className="size-4.5" />
+                  Message on Facebook
                   <ArrowRight className="size-4.5" />
                 </a>
                 <a
-                  href={`tel:${CONTACT.phones[0].replace(/\s+/g, "")}`}
+                  href={SOCIAL.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-ghost inline-flex h-13 items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold"
                 >
-                  <Phone className="size-4.5" />
-                  {CONTACT.phones[0]}
+                  <WhatsAppIcon className="size-4.5" />
+                  Contact via WhatsApp
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-full px-4 text-sm font-medium text-silver/95 transition-colors hover:text-cyan"
+                >
+                  Or send an email inquiry
+                  <ArrowRight className="size-4" />
                 </a>
               </div>
             </div>

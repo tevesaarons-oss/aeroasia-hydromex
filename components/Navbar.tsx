@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { NAV_LINKS } from "@/lib/data";
+import { Menu, X, Mail } from "lucide-react";
+import { NAV_LINKS, SOCIAL, CONTACT } from "@/lib/data";
 import { cn } from "@/lib/cn";
 import { BrandMark } from "./BrandMark";
+import { FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
 
 /** Internal absolute routes use next/link; hash-only and external use <a>. */
 function NavItem({
@@ -70,13 +71,25 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:block">
-          <NavItem
-            href="/#contact"
-            className="btn-primary inline-flex h-10 items-center rounded-full px-5 text-sm"
+        <div className="hidden items-center gap-2 md:flex">
+          <a
+            href={SOCIAL.facebookUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="A. Hydromex on Facebook"
+            className="btn-ghost flex size-10 items-center justify-center rounded-full"
           >
-            Book a Consultation
-          </NavItem>
+            <FacebookIcon className="size-4" />
+          </a>
+          <a
+            href={SOCIAL.facebookUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-flex h-10 items-center gap-2 rounded-full px-5 text-sm"
+          >
+            <MessengerIcon className="size-4" />
+            Message on Facebook
+          </a>
         </div>
 
         <button
@@ -95,7 +108,7 @@ export function Navbar() {
         className={cn(
           "md:hidden",
           "overflow-hidden border-t border-white/10 bg-navy/95 backdrop-blur-xl transition-[max-height,opacity] duration-300",
-          open ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0",
+          open ? "max-h-[720px] opacity-100" : "max-h-0 opacity-0",
         )}
       >
         <ul className="flex flex-col px-5 py-4">
@@ -110,17 +123,83 @@ export function Navbar() {
               </NavItem>
             </li>
           ))}
-          <li className="mt-2">
-            <NavItem
-              href="/#contact"
+
+          <li className="mt-3">
+            <a
+              href={SOCIAL.facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="btn-primary inline-flex h-11 w-full items-center justify-center rounded-full px-5 text-sm"
+              className="btn-primary inline-flex h-11 w-full items-center justify-center gap-2 rounded-full px-5 text-sm"
             >
-              Book a Consultation
-            </NavItem>
+              <FacebookIcon className="size-4" />
+              Message on Facebook
+            </a>
+          </li>
+
+          <li className="mt-3 border-t border-white/10 pt-3">
+            <div className="px-1 pb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
+              Direct Channels
+            </div>
+            <ul className="grid grid-cols-2 gap-2">
+              <SocialMenuLink
+                href={SOCIAL.messengerUrl}
+                icon={MessengerIcon}
+                label="Messenger"
+                onClick={() => setOpen(false)}
+              />
+              <SocialMenuLink
+                href={SOCIAL.whatsappUrl}
+                icon={WhatsAppIcon}
+                label="WhatsApp"
+                onClick={() => setOpen(false)}
+              />
+              <SocialMenuLink
+                href={`mailto:${CONTACT.primaryEmail}`}
+                icon={Mail}
+                label="Email"
+                onClick={() => setOpen(false)}
+                external={false}
+              />
+              <SocialMenuLink
+                href={SOCIAL.facebookUrl}
+                icon={FacebookIcon}
+                label="FB Page"
+                onClick={() => setOpen(false)}
+              />
+            </ul>
           </li>
         </ul>
       </div>
     </header>
+  );
+}
+
+function SocialMenuLink({
+  href,
+  icon: Icon,
+  label,
+  onClick,
+  external = true,
+}: {
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  onClick?: () => void;
+  external?: boolean;
+}) {
+  return (
+    <li>
+      <a
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        onClick={onClick}
+        className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2.5 text-[13px] text-silver/95 transition-colors hover:border-cyan/35 hover:bg-cyan/10 hover:text-cyan"
+      >
+        <Icon className="size-4 text-cyan" />
+        {label}
+      </a>
+    </li>
   );
 }

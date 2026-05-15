@@ -4,15 +4,14 @@ import { useState, type FormEvent } from "react";
 import {
   Mail,
   Phone,
-  MapPin,
   Send,
   Check,
-  Building2,
   ClipboardCheck,
 } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { CONTACT } from "@/lib/data";
+import { CONTACT, SOCIAL } from "@/lib/data";
 import { cn } from "@/lib/cn";
+import { FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -35,7 +34,7 @@ export function ContactSection() {
     ];
     const body = encodeURIComponent(lines.join("\r\n"));
     const subject = encodeURIComponent(
-      "Site Assessment Request · Aeroasia-Hydromex",
+      "Site Assessment Request · A. Hydromex STP & AOP",
     );
     setSubmitted(true);
     window.location.href = `mailto:${CONTACT.primaryEmail}?subject=${subject}&body=${body}`;
@@ -69,8 +68,25 @@ export function ContactSection() {
                     <span className="gradient-text-cyan">Site Assessment.</span>
                   </h2>
                   <p className="mt-2 text-[14px] leading-relaxed text-clean/90">
-                    Tell us about your facility. We&rsquo;ll get back within one
-                    business day to schedule a site walk or technical call.
+                    Tell us about your facility. The fastest reply is via{" "}
+                    <a
+                      href={SOCIAL.messengerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cyan hover:text-clean"
+                    >
+                      Messenger
+                    </a>{" "}
+                    or{" "}
+                    <a
+                      href={SOCIAL.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cyan hover:text-clean"
+                    >
+                      WhatsApp
+                    </a>{" "}
+                    &mdash; or submit this form to send by email.
                   </p>
                 </div>
                 <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-silver/85">
@@ -108,7 +124,10 @@ export function ContactSection() {
               <div className="relative mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-xs leading-relaxed text-silver/90">
                   Submitting opens your email client preloaded for{" "}
-                  <span className="text-clean/95">{CONTACT.primaryEmail}</span>.
+                  <span className="text-clean/95 break-all">
+                    {CONTACT.primaryEmail}
+                  </span>
+                  .
                 </p>
                 <button
                   type="submit"
@@ -124,7 +143,7 @@ export function ContactSection() {
                   ) : (
                     <>
                       <Send className="size-4" />
-                      Send Request
+                      Send Email Inquiry
                     </>
                   )}
                 </button>
@@ -137,10 +156,15 @@ export function ContactSection() {
                   "Site assessment plan",
                   "Indicative scope & next steps",
                 ].map((t, i) => (
-                  <div key={t} className="flex items-start gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-silver/85">
+                  <div
+                    key={t}
+                    className="flex items-start gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-silver/85"
+                  >
                     <ClipboardCheck className="mt-0.5 size-3.5 text-cyan" />
                     <span>
-                      <span className="text-cyan/85">{String(i + 1).padStart(2, "0")} ·</span>{" "}
+                      <span className="text-cyan/85">
+                        {String(i + 1).padStart(2, "0")} ·
+                      </span>{" "}
                       {t}
                     </span>
                   </div>
@@ -149,51 +173,77 @@ export function ContactSection() {
             </form>
           </Reveal>
 
-          {/* Right — contact channels */}
+          {/* Right — active conversion channels */}
           <Reveal delay={0.05}>
             <div className="grid gap-4">
-              <ContactCard icon={Mail} title="Email" code="CH-01">
-                <ul className="space-y-2 text-[13.5px]">
-                  {CONTACT.emails.map((e) => (
-                    <li key={e}>
-                      <a
-                        href={`mailto:${e}`}
-                        className="text-silver/95 hover:text-cyan"
-                      >
-                        {e}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </ContactCard>
-
-              <ContactCard icon={Phone} title="Phone" code="CH-02">
-                <ul className="space-y-2 text-[13.5px]">
-                  {CONTACT.phones.map((p) => (
-                    <li key={p}>
-                      <a
-                        href={`tel:${p.replace(/\s+/g, "")}`}
-                        className="text-silver/95 hover:text-cyan"
-                      >
-                        {p}
-                      </a>
-                    </li>
-                  ))}
-                  <li className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-silver/80">
-                    Satellite Office · {CONTACT.satelliteOffice}
-                  </li>
-                </ul>
-              </ContactCard>
-
-              <ContactCard icon={MapPin} title="Office" code="CH-03">
+              <ContactChannel
+                icon={FacebookIcon}
+                title="Message on Facebook"
+                code="CH-01 · Primary"
+                href={SOCIAL.facebookUrl}
+                cta="Open Facebook Page"
+                accent
+              >
                 <p className="text-[13.5px] leading-relaxed text-silver/95">
-                  {CONTACT.address}
+                  {SOCIAL.pageName} &mdash; the active marketing channel.
+                  Project updates, recent set-ups, and direct conversations
+                  with the team happen here.
                 </p>
-                <div className="mt-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-silver/85">
-                  <Building2 className="size-3" />
-                  Nationwide service · 70+ employees
-                </div>
-              </ContactCard>
+              </ContactChannel>
+
+              <ContactChannel
+                icon={MessengerIcon}
+                title="Chat on Messenger"
+                code="CH-02"
+                href={SOCIAL.messengerUrl}
+                cta="Start Messenger Chat"
+              >
+                <p className="text-[13.5px] leading-relaxed text-silver/95">
+                  Direct line to the team. Fastest path for quotes,
+                  site-walk scheduling, and follow-up.
+                </p>
+              </ContactChannel>
+
+              <ContactChannel
+                icon={WhatsAppIcon}
+                title="WhatsApp"
+                code="CH-03"
+                href={SOCIAL.whatsappUrl}
+                cta={`Chat ${CONTACT.whatsappDisplay}`}
+              >
+                <p className="text-[13.5px] leading-relaxed text-silver/95">
+                  Same line for voice and chat. International dial:{" "}
+                  <span className="text-clean/95">
+                    {CONTACT.whatsappDisplay}
+                  </span>
+                  .
+                </p>
+              </ContactChannel>
+
+              <ContactChannel
+                icon={Phone}
+                title="Phone"
+                code="CH-04"
+                href={`tel:${CONTACT.phoneE164}`}
+                cta={`Call ${CONTACT.phone}`}
+              >
+                <p className="text-[13.5px] leading-relaxed text-silver/95">
+                  Direct mobile line for project inquiries and on-call
+                  troubleshooting.
+                </p>
+              </ContactChannel>
+
+              <ContactChannel
+                icon={Mail}
+                title="Email"
+                code="CH-05"
+                href={`mailto:${CONTACT.primaryEmail}`}
+                cta="Send Email Inquiry"
+              >
+                <p className="break-all text-[13.5px] leading-relaxed text-silver/95">
+                  {CONTACT.primaryEmail}
+                </p>
+              </ContactChannel>
             </div>
           </Reveal>
         </div>
@@ -202,19 +252,36 @@ export function ContactSection() {
   );
 }
 
-function ContactCard({
+function ContactChannel({
   icon: Icon,
   title,
   code,
+  href,
+  cta,
   children,
+  accent = false,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   code: string;
+  href: string;
+  cta: string;
   children: React.ReactNode;
+  accent?: boolean;
 }) {
+  const isExternal = href.startsWith("http");
   return (
-    <div className="card-lift rounded-2xl border border-white/10 bg-navy-2/45 p-5">
+    <a
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className={cn(
+        "card-lift group block rounded-2xl border bg-navy-2/45 p-5 transition-colors",
+        accent
+          ? "border-cyan/35 bg-gradient-to-br from-cyan/10 via-navy-2/55 to-navy/40 shadow-[0_30px_70px_-40px_rgba(0,157,255,0.5)]"
+          : "border-white/10 hover:border-cyan/35",
+      )}
+    >
       <div className="flex items-center justify-between border-b border-white/10 pb-3">
         <div className="flex items-center gap-2.5">
           <Icon className="size-4.5 text-cyan" />
@@ -227,7 +294,11 @@ function ContactCard({
         </span>
       </div>
       <div className="mt-4">{children}</div>
-    </div>
+      <div className="mt-4 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-cyan group-hover:text-clean">
+        {cta}
+        <span aria-hidden="true">→</span>
+      </div>
+    </a>
   );
 }
 

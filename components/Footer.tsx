@@ -1,6 +1,7 @@
-import { Mail, Phone, MapPin } from "lucide-react";
-import { CONTACT, NAV_LINKS, SERVICES } from "@/lib/data";
+import { Mail, Phone } from "lucide-react";
+import { CONTACT, NAV_LINKS, SERVICES, SOCIAL } from "@/lib/data";
 import { BrandMark } from "./BrandMark";
+import { FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
 
 export function Footer() {
   return (
@@ -20,6 +21,25 @@ export function Footer() {
             <span className="size-1.5 rounded-full bg-cyan shadow-[0_0_8px_1px_rgba(0,200,255,0.7)]" />
             <span>Nationwide · 70+ Employees</span>
           </div>
+
+          {/* Primary social/contact channel row */}
+          <ul className="mt-6 flex flex-wrap gap-2">
+            <SocialPill
+              href={SOCIAL.facebookUrl}
+              icon={FacebookIcon}
+              label="Facebook"
+            />
+            <SocialPill
+              href={SOCIAL.messengerUrl}
+              icon={MessengerIcon}
+              label="Messenger"
+            />
+            <SocialPill
+              href={SOCIAL.whatsappUrl}
+              icon={WhatsAppIcon}
+              label="WhatsApp"
+            />
+          </ul>
         </div>
 
         <div className="md:col-span-2">
@@ -59,31 +79,44 @@ export function Footer() {
           </h4>
           <ul className="mt-4 space-y-3 text-sm text-silver/95">
             <li className="flex items-start gap-2.5">
-              <Mail className="mt-0.5 size-4 shrink-0 text-cyan/80" />
+              <FacebookIcon className="mt-0.5 size-4 shrink-0 text-cyan/80" />
               <a
-                href={`mailto:${CONTACT.primaryEmail}`}
+                href={SOCIAL.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white"
               >
-                {CONTACT.primaryEmail}
+                {SOCIAL.pageName}
+              </a>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <WhatsAppIcon className="mt-0.5 size-4 shrink-0 text-cyan/80" />
+              <a
+                href={SOCIAL.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white"
+              >
+                WhatsApp · {CONTACT.whatsappDisplay}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
               <Phone className="mt-0.5 size-4 shrink-0 text-cyan/80" />
-              <div className="flex flex-col">
-                {CONTACT.phones.map((p) => (
-                  <a
-                    key={p}
-                    href={`tel:${p.replace(/\s+/g, "")}`}
-                    className="hover:text-white"
-                  >
-                    {p}
-                  </a>
-                ))}
-              </div>
+              <a
+                href={`tel:${CONTACT.phoneE164}`}
+                className="hover:text-white"
+              >
+                {CONTACT.phone}
+              </a>
             </li>
             <li className="flex items-start gap-2.5">
-              <MapPin className="mt-0.5 size-4 shrink-0 text-cyan/80" />
-              <span>{CONTACT.address}</span>
+              <Mail className="mt-0.5 size-4 shrink-0 text-cyan/80" />
+              <a
+                href={`mailto:${CONTACT.primaryEmail}`}
+                className="break-all hover:text-white"
+              >
+                {CONTACT.primaryEmail}
+              </a>
             </li>
           </ul>
         </div>
@@ -99,5 +132,30 @@ export function Footer() {
         </p>
       </div>
     </footer>
+  );
+}
+
+function SocialPill({
+  href,
+  icon: Icon,
+  label,
+}: {
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+}) {
+  return (
+    <li>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-silver/95 transition-colors hover:border-cyan/40 hover:bg-cyan/10 hover:text-cyan"
+        aria-label={`Open ${label}`}
+      >
+        <Icon className="size-3.5" />
+        {label}
+      </a>
+    </li>
   );
 }

@@ -15,14 +15,16 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.aeroasiahydromex.com"),
   title: {
-    default: "Aeroasia-Hydromex Technologies — Advanced Wastewater Treatment & AOP Systems",
-    template: "%s · Aeroasia-Hydromex",
+    default:
+      "A. Hydromex STP & AOP Wastewater Solutions PH | Aeroasia-Hydromex",
+    template: "%s · A. Hydromex STP & AOP",
   },
   description:
-    "Aeroasia-Hydromex Technologies Co. Ltd. — Engineered for Compliance, Built with Reliance. Advanced Oxidation Process (AOP) wastewater treatment, STP design, installation, rehabilitation, and DENR-compliant systems nationwide in the Philippines.",
+    "Advanced STP, AOP wastewater treatment, rehabilitation, installation, and maintenance support for hospitals, industries, commercial facilities, resorts, LGUs, and institutions in the Philippines. Message us on Facebook for the fastest reply.",
   keywords: [
+    "A. Hydromex",
+    "AHydromexSTP",
     "Aeroasia",
     "Hydromex",
     "wastewater treatment Philippines",
@@ -33,21 +35,21 @@ export const metadata: Metadata = {
     "DAO 2016-08",
     "DAO 2021-19",
     "sewage treatment plant",
+    "San Pedro Laguna",
   ],
   openGraph: {
-    title: "Aeroasia-Hydromex Technologies",
+    title: "A. Hydromex STP & AOP Wastewater Solutions PH",
     description:
-      "Engineered for Compliance, Built with Reliance. Clean Water Solutions with Lasting Alliance.",
-    url: "https://www.aeroasiahydromex.com",
-    siteName: "Aeroasia-Hydromex",
+      "Advanced STP and AOP wastewater treatment in the Philippines. Engineered for Compliance, Built with Reliance.",
+    siteName: "A. Hydromex STP & AOP Wastewater Solutions PH",
     locale: "en_PH",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aeroasia-Hydromex Technologies",
+    title: "A. Hydromex STP & AOP Wastewater Solutions PH",
     description:
-      "Engineered for Compliance, Built with Reliance. Clean Water Solutions with Lasting Alliance.",
+      "Advanced STP and AOP wastewater treatment in the Philippines. Message us on Facebook for the fastest reply.",
   },
   robots: { index: true, follow: true },
 };
