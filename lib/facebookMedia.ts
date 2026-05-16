@@ -22,6 +22,8 @@ export type FacebookAssetType =
 export type FacebookPlacement =
   | "marketing-section-featured"
   | "marketing-section-supporting"
+  | "marketing-section-proof"
+  | "social-badge"
   | "footer-strip"
   | "contact-card";
 
@@ -45,12 +47,68 @@ export type FacebookAsset = {
 };
 
 /**
- * Empty by design. Add entries as the client supplies Facebook page
- * materials. Until at least one row is `enabled: true`, the
- * "Active Project Updates & Set-ups" section renders the text-only
- * fallback that points users to the live Facebook page.
+ * Curated selection of assets saved from the active Facebook page.
+ * Only the strongest visuals are enabled; the section is meant to feel
+ * premium and engineering-focused, not like a Facebook dump. Other
+ * assets dropped into `public/assets/facebook/` can be added below
+ * with `enabled: true` once they've been reviewed.
  */
-export const FACEBOOK_MEDIA: FacebookAsset[] = [];
+export const FACEBOOK_MEDIA: FacebookAsset[] = [
+  {
+    id: "fb-profile-badge",
+    type: "branding",
+    src: "/assets/facebook/branding/fb-profile.jpg",
+    caption: "A. Hydromex public Facebook update",
+    sourceUrl: "https://www.facebook.com/AHydromexSTP",
+    placement: "social-badge",
+    enabled: true,
+  },
+  {
+    id: "clean-systems-3",
+    type: "photo",
+    src: "/assets/facebook/photos/clean-systems-3.jpg",
+    caption: "Recent treatment system set-up",
+    sourceUrl: "https://www.facebook.com/AHydromexSTP",
+    placement: "marketing-section-featured",
+    enabled: true,
+  },
+  {
+    id: "clean-systems-2",
+    type: "photo",
+    src: "/assets/facebook/photos/clean-systems-2.jpg",
+    caption: "Recent treatment system set-up",
+    sourceUrl: "https://www.facebook.com/AHydromexSTP",
+    placement: "marketing-section-supporting",
+    enabled: true,
+  },
+  {
+    id: "site-inspection-3",
+    type: "post-screenshot",
+    src: "/assets/facebook/posts/site-inspection-3.jpg",
+    caption: "Field inspection and system review",
+    sourceUrl: "https://www.facebook.com/AHydromexSTP",
+    placement: "marketing-section-supporting",
+    enabled: true,
+  },
+  {
+    id: "effluent-samples-1",
+    type: "photo",
+    src: "/assets/facebook/proof/effluent-samples-1.jpg",
+    caption: "Effluent sample material",
+    sourceUrl: "https://www.facebook.com/AHydromexSTP",
+    placement: "marketing-section-proof",
+    enabled: true,
+  },
+  {
+    id: "class-a-compliance-01",
+    type: "graphic",
+    src: "/assets/facebook/proof/class-a-compliance-01.jpg",
+    caption: "Compliance-related marketing material",
+    sourceUrl: "https://www.facebook.com/AHydromexSTP",
+    placement: "marketing-section-proof",
+    enabled: true,
+  },
+];
 
 export function enabledFacebookMedia(): FacebookAsset[] {
   return FACEBOOK_MEDIA.filter((a) => a.enabled);

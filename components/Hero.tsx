@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { HeroVisual } from "./HeroVisual";
 import { VideoPanel } from "./VideoPanel";
-import { STATS } from "@/lib/data";
+import { STATS, SOCIAL } from "@/lib/data";
 import { mediaAssets } from "@/lib/media";
+import { FacebookIcon } from "./BrandIcons";
 
 export function Hero() {
   return (
@@ -75,11 +76,13 @@ export function Hero() {
             className="mt-7 flex flex-wrap items-center gap-3"
           >
             <a
-              href="#contact"
+              href={SOCIAL.facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary inline-flex h-12 items-center gap-2 rounded-full px-7 text-sm"
             >
-              Book a Consultation
-              <ArrowRight className="size-4" />
+              <FacebookIcon className="size-4" />
+              Message us on Facebook
             </a>
             <a
               href="#technology"
@@ -89,6 +92,22 @@ export function Hero() {
               <ChevronDown className="size-4" />
             </a>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="mt-3 text-[12.5px] leading-relaxed text-silver/80"
+          >
+            A premium overview of A. Hydromex&rsquo;s services, technology,
+            projects, and team.{" "}
+            <a
+              href="#contact"
+              className="text-cyan hover:text-clean"
+            >
+              Send a consultation request &rarr;
+            </a>
+          </motion.p>
 
           {/* Trust chips */}
           <motion.ul

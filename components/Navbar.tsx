@@ -133,13 +133,17 @@ export function Navbar() {
               className="btn-primary inline-flex h-11 w-full items-center justify-center gap-2 rounded-full px-5 text-sm"
             >
               <FacebookIcon className="size-4" />
-              Message on Facebook
+              Message us on Facebook
             </a>
+            <p className="mt-2 px-1 text-[11px] leading-relaxed text-silver/80">
+              The Facebook page is the active marketing and inquiry
+              channel.
+            </p>
           </li>
 
           <li className="mt-3 border-t border-white/10 pt-3">
             <div className="px-1 pb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
-              Direct Channels
+              Connect through Messenger or WhatsApp
             </div>
             <ul className="grid grid-cols-2 gap-2">
               <SocialMenuLink

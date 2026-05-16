@@ -3,6 +3,7 @@ import {
   AlertTriangle,
   Beaker,
   Building2,
+  ClipboardCheck,
   Clock,
   Cpu,
   Droplets,
@@ -130,38 +131,43 @@ export type Service = { icon: LucideIcon; title: string; desc: string };
 export const SERVICES: Service[] = [
   {
     icon: Hammer,
-    title: "New STP Design & Build",
-    desc: "End-to-end engineering for greenfield facilities — hydraulic design, equipment, electrical, controls, and commissioning.",
+    title: "Sewage Treatment Plant (STP) Design & Build",
+    desc: "End-to-end engineering for new STP facilities — hydraulic design, equipment, electrical, controls, and commissioning, designed to support DENR compliance from day one.",
   },
   {
     icon: Recycle,
-    title: "STP Rehabilitation",
-    desc: "Bring aging or underperforming sewage treatment plants back to spec with minimum disruption.",
+    title: "STP Rehabilitation & Upgrading",
+    desc: "Bring aging or underperforming sewage treatment plants back to spec — process re-tuning, component-level replacement, and capacity upgrades with minimum operational disruption.",
+  },
+  {
+    icon: Zap,
+    title: "Advanced Oxidation Process (AOP) Technology",
+    desc: "Locally engineered AOP — hydroxyl-radical chemistry integrated as a polish or core treatment stage, including retrofits into existing STP trains.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "DENR Compliance · DAO 2016-08 & 2021-19",
+    desc: "DENR-compliant system design aligned with DAO 2016-08 and DAO 2021-19 effluent expectations, with sampling-readiness planning and operations documentation.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Discharge Permit (DP) Assistance",
+    desc: "Assistance with discharge permit (DP) requirements — system-design alignment with permit conditions, documentation, and operational planning to prepare facilities for permitting.",
+  },
+  {
+    icon: Settings2,
+    title: "Preventive Maintenance & After-Sales Support",
+    desc: "Scheduled servicing, parts replacement, performance tuning, and nationwide on-call after-sales support — designed to keep discharge stable over the system's operating life.",
+  },
+  {
+    icon: Activity,
+    title: "Troubleshooting & Diagnostics",
+    desc: "Diagnostic services for odor, foaming, sludge bulking, off-spec effluent, and equipment faults — with low-odor design principles applied to corrective recommendations.",
   },
   {
     icon: Truck,
     title: "STP Relocation",
     desc: "Disassembly, transport, and re-commissioning of existing STPs as facilities expand or reconfigure.",
-  },
-  {
-    icon: Zap,
-    title: "AOP System Upgrades",
-    desc: "Retrofit Advanced Oxidation Process technology into existing treatment trains for stronger polish.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "DAO Compliance Support",
-    desc: "System design and operational planning aligned with DENR AO 2016-08 and DAO 2021-19 standards.",
-  },
-  {
-    icon: Settings2,
-    title: "Preventive Maintenance",
-    desc: "Scheduled servicing, parts replacement, and performance tuning — keeping discharge stable.",
-  },
-  {
-    icon: Activity,
-    title: "Troubleshooting & Diagnostics",
-    desc: "Diagnostive services for odor, foaming, sludge bulking, off-spec effluent, and equipment faults.",
   },
   {
     icon: Droplets,

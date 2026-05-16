@@ -2,13 +2,24 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Hammer, ShieldCheck, Wrench } from "lucide-react";
+import {
+  ArrowUpRight,
+  Award,
+  BadgeCheck,
+  Building2,
+  Hammer,
+  MapPin,
+  ShieldCheck,
+  Wrench,
+  Zap,
+} from "lucide-react";
+import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { SERVICES } from "@/lib/data";
 import { cn } from "@/lib/cn";
 
 const SERVICE_DETAILS: Record<string, { capabilities: string[]; deliverables: string[] }> = {
-  "New STP Design & Build": {
+  "Sewage Treatment Plant (STP) Design & Build": {
     capabilities: [
       "Hydraulic + influent profiling",
       "Equipment + electrical + controls design",
@@ -22,51 +33,37 @@ const SERVICE_DETAILS: Record<string, { capabilities: string[]; deliverables: st
       "Handover & training",
     ],
   },
-  "STP Rehabilitation": {
+  "STP Rehabilitation & Upgrading": {
     capabilities: [
       "Performance diagnostics",
       "Component-level replacement",
       "Hydraulic re-balancing",
-      "Process re-tuning",
+      "Process re-tuning + capacity upgrades",
     ],
     deliverables: [
-      "Rehab report",
+      "Rehab + upgrade report",
       "Updated process train",
       "Verified discharge readings",
       "Maintenance plan",
     ],
   },
-  "STP Relocation": {
+  "Advanced Oxidation Process (AOP) Technology": {
     capabilities: [
-      "Survey & disassembly plan",
-      "Transport + re-foundation",
-      "Re-installation",
-      "Re-commissioning",
-    ],
-    deliverables: [
-      "Relocation timeline",
-      "Reinstalled STP",
-      "Operating handover",
-      "Service continuity",
-    ],
-  },
-  "AOP System Upgrades": {
-    capabilities: [
-      "AOP integration into existing trains",
+      "AOP integration as polish or core stage",
       "Ozone + elevated pH chemistry tuning",
       "Microbubble contact integration",
-      "Tertiary polish staging",
+      "Retrofit into existing STP trains",
     ],
     deliverables: [
-      "Upgraded AOP train",
-      "Effluent quality observations",
+      "Engineered AOP train",
       "Operating procedures",
+      "Sampling-readiness setup",
       "Ongoing service plan",
     ],
   },
-  "DAO Compliance Support": {
+  "DENR Compliance · DAO 2016-08 & 2021-19": {
     capabilities: [
-      "Design aligned with DAO 2016-08 / 2021-19",
+      "System design aligned with DAO 2016-08 / 2021-19",
       "Sampling-readiness planning",
       "Operations documentation",
       "Monitoring routine setup",
@@ -78,12 +75,26 @@ const SERVICE_DETAILS: Record<string, { capabilities: string[]; deliverables: st
       "Maintenance cadence",
     ],
   },
-  "Preventive Maintenance": {
+  "Discharge Permit (DP) Assistance": {
+    capabilities: [
+      "DP requirement review",
+      "System-design alignment to permit conditions",
+      "Operations & monitoring planning",
+      "Documentation support",
+    ],
+    deliverables: [
+      "Permit-aligned design notes",
+      "Operating plan summary",
+      "Documentation pack",
+      "Next-step coordination",
+    ],
+  },
+  "Preventive Maintenance & After-Sales Support": {
     capabilities: [
       "Scheduled servicing",
       "Parts replacement",
       "Performance tuning",
-      "Effluent stability monitoring",
+      "Nationwide on-call after-sales support",
     ],
     deliverables: [
       "Service schedule",
@@ -101,9 +112,23 @@ const SERVICE_DETAILS: Record<string, { capabilities: string[]; deliverables: st
     ],
     deliverables: [
       "Diagnostic report",
-      "Corrective actions",
+      "Corrective actions (low-odor design where applicable)",
       "Verified resolution",
       "Preventive recommendations",
+    ],
+  },
+  "STP Relocation": {
+    capabilities: [
+      "Survey & disassembly plan",
+      "Transport + re-foundation",
+      "Re-installation",
+      "Re-commissioning",
+    ],
+    deliverables: [
+      "Relocation timeline",
+      "Reinstalled STP",
+      "Operating handover",
+      "Service continuity",
     ],
   },
   "Water Reuse Readiness": {
@@ -125,15 +150,26 @@ const SERVICE_DETAILS: Record<string, { capabilities: string[]; deliverables: st
 type Phase = "DESIGN" | "BUILD" | "SUPPORT";
 
 const SERVICE_PHASE: Record<string, Phase> = {
-  "New STP Design & Build": "DESIGN",
-  "STP Rehabilitation": "BUILD",
-  "STP Relocation": "BUILD",
-  "AOP System Upgrades": "BUILD",
-  "DAO Compliance Support": "DESIGN",
-  "Preventive Maintenance": "SUPPORT",
+  "Sewage Treatment Plant (STP) Design & Build": "DESIGN",
+  "STP Rehabilitation & Upgrading": "BUILD",
+  "Advanced Oxidation Process (AOP) Technology": "BUILD",
+  "DENR Compliance · DAO 2016-08 & 2021-19": "DESIGN",
+  "Discharge Permit (DP) Assistance": "DESIGN",
+  "Preventive Maintenance & After-Sales Support": "SUPPORT",
   "Troubleshooting & Diagnostics": "SUPPORT",
+  "STP Relocation": "BUILD",
   "Water Reuse Readiness": "DESIGN",
 };
+
+const CREDENTIALS: Array<{ label: string; icon: typeof BadgeCheck }> = [
+  { label: "Strong Industry Presence", icon: Building2 },
+  { label: "Proven STP Design & Build Capability", icon: Hammer },
+  { label: "Licensed Engineering Team", icon: BadgeCheck },
+  { label: "DENR-Compliant System Design", icon: ShieldCheck },
+  { label: "Advanced Oxidation Process (AOP) Expertise", icon: Zap },
+  { label: "Nationwide Project Portfolio", icon: MapPin },
+  { label: "15+ Years Industry Experience", icon: Award },
+];
 
 const PHASES: Array<{ key: Phase; label: string; icon: typeof Hammer }> = [
   { key: "DESIGN", label: "Design", icon: ShieldCheck },
@@ -160,7 +196,7 @@ export function ServicesSection() {
               <span className="gradient-text-cyan">every stage of your wastewater system.</span>
             </>
           }
-          description="Aeroasia operates across the full system lifecycle — from greenfield STP design and AOP integration to rehabilitation, diagnostive services, and after-sales support."
+          description="Wastewater solutions for hospitals, commercial buildings, resorts, food industries, and light-industrial applications — across the full system lifecycle from STP design and AOP technology to rehabilitation, preventive maintenance, and discharge permit support."
         />
 
         <div className="mt-12 grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
@@ -356,6 +392,49 @@ export function ServicesSection() {
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* Credentials strip — capability framing pulled from the Facebook page */}
+        <Reveal delay={0.1}>
+          <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-navy-2/60 via-navy/40 to-navy-2/60 p-5 sm:p-6">
+            <header className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
+              <div>
+                <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
+                  <span className="size-1.5 rounded-full bg-cyan shadow-[0_0_8px_2px_rgba(0,200,255,0.7)]" />
+                  Credentials & Capability
+                </div>
+                <h3 className="text-display mt-2 text-balance text-lg font-semibold leading-snug text-white sm:text-xl">
+                  How Aeroasia-Hydromex backs the work.
+                </h3>
+              </div>
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-silver/85">
+                STRIP · CRED-01
+              </span>
+            </header>
+            <ul className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+              {CREDENTIALS.map((c, i) => {
+                const Icon = c.icon;
+                return (
+                  <li
+                    key={c.label}
+                    className="card-lift flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3"
+                  >
+                    <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-cyan/10 ring-1 ring-cyan/25">
+                      <Icon className="size-4 text-cyan" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-silver/75">
+                        CRED-{String(i + 1).padStart(2, "0")}
+                      </div>
+                      <div className="text-display text-[13.5px] font-medium leading-snug text-white">
+                        {c.label}
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

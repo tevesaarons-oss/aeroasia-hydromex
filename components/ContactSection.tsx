@@ -178,16 +178,16 @@ export function ContactSection() {
             <div className="grid gap-4">
               <ContactChannel
                 icon={FacebookIcon}
-                title="Message on Facebook"
+                title="Message us on Facebook"
                 code="CH-01 · Primary"
                 href={SOCIAL.facebookUrl}
                 cta="Open Facebook Page"
                 accent
               >
                 <p className="text-[13.5px] leading-relaxed text-silver/95">
-                  {SOCIAL.pageName} &mdash; the active marketing channel.
-                  Project updates, recent set-ups, and direct conversations
-                  with the team happen here.
+                  {SOCIAL.pageName} &mdash; the active Facebook page where
+                  recent set-ups, project materials, and live updates are
+                  posted. Message us on Facebook for inquiries.
                 </p>
               </ContactChannel>
 

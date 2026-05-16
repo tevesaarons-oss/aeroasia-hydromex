@@ -17,6 +17,11 @@ export function Footer() {
             solutions with lasting alliance &mdash; serving hospitals,
             industries, malls, resorts, and LGUs across the Philippines.
           </p>
+          <p className="mt-3 max-w-xs text-[12.5px] leading-relaxed text-silver/75">
+            Follow the active Facebook page for recent updates and
+            set-ups. Use this site for an overview of services,
+            technology, projects, and team.
+          </p>
           <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-cyan/25 bg-cyan/5 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
             <span className="size-1.5 rounded-full bg-cyan shadow-[0_0_8px_1px_rgba(0,200,255,0.7)]" />
             <span>Nationwide · 70+ Employees</span>

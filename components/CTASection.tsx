@@ -29,8 +29,9 @@ export function CTASection() {
                 <p className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-silver/95">
                   Whether you&rsquo;re building a new facility, rehabilitating
                   an aging STP, preparing for DENR sampling, or exploring AOP
-                  upgrades &mdash; reach the team directly on Messenger or
-                  WhatsApp for the fastest reply.
+                  upgrades &mdash; message us on Facebook, or connect through
+                  Messenger or WhatsApp for the fastest reply. Follow the
+                  active Facebook page for recent set-ups.
                 </p>
               </div>
 
