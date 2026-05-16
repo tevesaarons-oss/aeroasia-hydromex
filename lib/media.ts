@@ -136,8 +136,9 @@ export const mediaAssets = {
     },
   ] as ProjectAsset[],
 
-  // Project portfolio — optional photo per year group.
-  // Keys match PROJECT_GROUPS[].range exactly.
+  // Legacy year-range project photos. Kept for backward compatibility
+  // with the homepage projects component pattern; current project
+  // portfolio is sourced category-by-category from `lib/projects.ts`.
   projects: {
     "2009 – 2012": {
       src: "/assets/projects/2009-2012-01.jpg",

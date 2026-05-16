@@ -28,11 +28,14 @@ export function TechnologySection() {
           }
           description={
             <>
-              AOP uses highly reactive hydroxyl radicals (·OH) to break down
-              contaminants that conventional treatment may struggle to remove.
-              Aeroasia&rsquo;s locally engineered approach combines anaerobic
-              digestion, ozone, elevated pH, microbubble contact, and tertiary
-              treatment &mdash; a staged train designed for cleaner effluent.
+              AOP generates hydroxyl radicals (&middot;OH) &mdash; highly
+              reactive oxygen species that break down a wide range of
+              pollutants, including organic materials and microorganisms
+              that resist conventional treatment. Aeroasia-Hydromex&rsquo;s
+              locally developed AOP system pairs hydroxyl-radical chemistry
+              with anaerobic digestion, ozone, elevated pH, microbubble
+              contact, and tertiary treatment &mdash; producing effluent
+              ready for safe discharge or reuse where applicable.
             </>
           }
         />

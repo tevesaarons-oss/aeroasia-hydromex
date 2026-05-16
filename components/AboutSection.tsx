@@ -36,24 +36,26 @@ export function AboutSection() {
               </h3>
               <div className="mt-5 space-y-4 text-[14.5px] leading-relaxed text-silver/95">
                 <p>
-                  Our roots trace back to 2006, when Engineer Norlan Unson of
-                  Aeroasia partnered with Dr. Harald Kremnitz of the HWK
-                  Foundation to adapt patented Hydromex technology &mdash;
-                  originally developed for toxic and hazardous waste
-                  treatment &mdash; into wastewater management.
+                  In 2006, the groundwork was laid when Engr. Norlan Unson
+                  of Aeroasia partnered with Dr. Harald Kremnitz of the HWK
+                  Foundation. Together they adapted the patented Hydromex
+                  technology &mdash; originally designed for toxic and
+                  hazardous waste treatment &mdash; for wastewater
+                  management.
                 </p>
                 <p>
-                  Since 2009, Aeroasia-Hydromex Technologies Co. Ltd. has been
-                  a trusted name in wastewater treatment, specializing in
-                  Advanced Oxidation Process (AOP) and custom-engineered
-                  systems for industrial, agricultural, commercial, medical,
-                  institutional, municipal, laboratory, and food &amp;
-                  beverage facilities.
+                  That collaboration led to a locally developed Advanced
+                  Oxidation Process (AOP). With the refined technology,
+                  Aeroasia-Hydromex Technologies Co. Ltd. was officially
+                  established in 2009 and has been serving healthcare,
+                  commercial, tourism &amp; residential, food, and light-
+                  industrial facilities across the Philippines since.
                 </p>
                 <p>
-                  Today, Aeroasia is a nationwide team of 70+ engineers,
-                  technicians, and operators committed to cleaner water,
-                  smarter infrastructure, and sustainable compliance.
+                  Today, Aeroasia-Hydromex is a nationwide team of 70+
+                  engineers, technicians, and operators committed to
+                  cleaner water, smarter infrastructure, and DENR-compliant
+                  system design.
                 </p>
               </div>
             </article>

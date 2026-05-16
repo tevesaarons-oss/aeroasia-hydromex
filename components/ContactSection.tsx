@@ -244,6 +244,68 @@ export function ContactSection() {
                   {CONTACT.primaryEmail}
                 </p>
               </ContactChannel>
+
+              {/* Corporate profile details — sourced from the company
+                  profile PDF. Reference info, not a primary inquiry CTA. */}
+              <div className="rounded-2xl border border-white/10 bg-navy-2/30 p-5">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-silver/85">
+                    Company Profile Contacts
+                  </div>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-silver/70">
+                    REF · PROFILE
+                  </span>
+                </div>
+                <dl className="mt-4 space-y-3 text-[13px] leading-relaxed">
+                  <div>
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
+                      General Manager
+                    </dt>
+                    <dd className="text-clean/95">Engr. Norlan G. Unson</dd>
+                  </div>
+                  <div>
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
+                      Project Eng&rsquo;g Manager
+                    </dt>
+                    <dd className="text-clean/95">
+                      Engr. Philip R. Paygane Jr.
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
+                      Office
+                    </dt>
+                    <dd className="text-silver/95">
+                      Rm. 306 ETG Business Center, Poblacion, San Pedro
+                      City, Laguna, Philippines 4023
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
+                      Profile Emails
+                    </dt>
+                    <dd className="break-all text-silver/95">
+                      <a
+                        href="mailto:n_unson@yahoo.com"
+                        className="hover:text-cyan"
+                      >
+                        n_unson@yahoo.com
+                      </a>
+                      {" · "}
+                      <a
+                        href={`mailto:${CONTACT.primaryEmail}`}
+                        className="hover:text-cyan"
+                      >
+                        {CONTACT.primaryEmail}
+                      </a>
+                    </dd>
+                  </div>
+                </dl>
+                <p className="mt-3 font-mono text-[10px] uppercase leading-relaxed tracking-[0.22em] text-silver/70">
+                  For fastest reply, please use Facebook, Messenger, or
+                  WhatsApp above.
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>

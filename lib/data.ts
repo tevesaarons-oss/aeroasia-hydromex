@@ -187,31 +187,31 @@ export const SECTORS: Sector[] = [
     icon: Hospital,
     title: "Hospitals & Healthcare",
     concern:
-      "Infection-sensitive environments, continuous operations, DENR sampling readiness, and high operational reliability.",
+      "Hospitals, clinics, dialysis centers, and healthcare facilities. AOP setups designed to remain effective in the presence of antibiotics, chemical reagents, and disinfectants — and ready for upgrading toward recycling options where applicable.",
   },
   {
     icon: ShoppingBag,
     title: "Malls & Commercial Centers",
     concern:
-      "High foot traffic, odor control, compact footprint, and reliability for daily mall operations.",
+      "Commercial developments — small footprint requirements and cost-effective operation tailored to malls, public markets, and BPO towers.",
   },
   {
     icon: Palmtree,
     title: "Hotels & Resorts",
     concern:
-      "Guest experience, coastal and water-sensitive locations, and environmental stewardship.",
+      "Hotels, resorts, condominium units, and other residential developments. Minimal noise, tolerable odor emission, and high-quality effluent — suited to densely populated and environmentally sensitive sites.",
   },
   {
     icon: Factory,
-    title: "Industrial Facilities",
+    title: "Light Industry",
     concern:
-      "Stronger wastewater loads, variable influent, and robust systems that hold up to continuous duty.",
+      "Warehouses, logistics, offices, and BPO centers — compact AOP for sites with minimal pollutant volume that still need DENR compliance and low-odor design in urban areas.",
   },
   {
     icon: Beaker,
-    title: "Food & Beverage Plants",
+    title: "Food Industry",
     concern:
-      "High-BOD, high-FOG streams that demand engineered primary and secondary treatment.",
+      "Commissaries, food processing, and canning. AOP paired with Aeroasia-Hydromex's oil digester — designed to minimize foul odor, reduce FOG volume substantially, and render grease degradable.",
   },
   {
     icon: FlaskConical,
@@ -223,7 +223,7 @@ export const SECTORS: Sector[] = [
     icon: Building2,
     title: "Condos & Mixed-Use",
     concern:
-      "Urban footprints, low-noise operation, and modular systems that fit basement or podium installs.",
+      "Residential developments and mixed-use buildings — low-noise, low-odor design suited to basement or podium installs in tight urban footprints.",
   },
   {
     icon: Users,
@@ -326,82 +326,9 @@ export const VALUES: Value[] = [
   { letter: "O", title: "Openness to Innovation", desc: "Continuously refining AOP and treatment process design." },
 ];
 
-export type ProjectGroup = {
-  range: string;
-  projects: string[];
-};
-
-export const PROJECT_GROUPS: ProjectGroup[] = [
-  {
-    range: "2009 – 2012",
-    projects: [
-      "Calamba Medical Center",
-      "San Pablo Doctors Hospital",
-      "Community General Hospital",
-      "Laguna Doctors Hospital",
-      "Paete General Hospital",
-      "Siniloan Pioneer General Hospital",
-      "Luis Tirso Medical Center",
-      "Dr. Montano Ramos Medical Center",
-      "Perpetual Soccour Hospital",
-    ],
-  },
-  {
-    range: "2013 – 2018",
-    projects: [
-      "Gabriela Silang General Hospital",
-      "Palawan Adventist Hospital",
-      "Urdaneta Sacred Heart Center",
-      "Calamba Medical Center Tower 2",
-      "Our Health Center",
-      "Metro Antipolo Medical Center",
-      "Southern Isabela General Hospital",
-      "Sacred Heart Medical Center",
-      "Calamba Medical Kidney Center",
-      "Manila Adventist Hospital",
-    ],
-  },
-  {
-    range: "2019 – 2021",
-    projects: [
-      "Taytay Doctors Hospital",
-      "Ortigas Hospital",
-      "Maitum Municipal Hospital",
-      "ACE Medical Center Cebu City",
-      "Mandaluyong City Dialysis Center",
-      "Rosario Maclang General Hospital",
-      "Morong Medical and Hemodialysis Center",
-      "Urdaneta Sacred Heart Center",
-      "Metro Lemery Medical Center",
-      "Rosario Memorial Hospital",
-      "Metro San Jose Medical Center",
-      "Cabuyao City Hospital",
-      "Hemotek Renal Center",
-      "Karmelli Clinic and Hospital",
-      "Bayugan City Doctors Hospital",
-    ],
-  },
-  {
-    range: "2022 – 2025",
-    projects: [
-      "Allied Care Experts Medical Center Tacloban",
-      "Allied Care Experts Medical Center Puerto Princesa",
-      "Sta. Rosa Hospital and Medical Center",
-      "Palawan Adventist Hospital",
-      "Morong Medical and Hemodialysis Center",
-      "Siniloan Pioneer General Hospital",
-      "Unihealth Quezon and Medical Center",
-      "Christ the King Hospital",
-      "Unihealth Southwoods Hospital and Medical Center",
-      "Urology Center of the Philippines",
-      "Lipa Medix Medical Center",
-      "JKQ Medical and Wellness Center",
-      "Sto. Rosario Hospital",
-      "St. John The Baptist Hospital",
-      "Mabini General Hospital",
-    ],
-  },
-];
+// Project portfolio data moved to `lib/projects.ts`. Source of truth is
+// now the two Aeroasia-Hydromex PDFs (company profile + the dedicated
+// completed/ongoing projects list).
 
 export const COMPLIANCE_POINTS = [
   "DENR Administrative Order 2016-08",

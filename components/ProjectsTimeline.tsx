@@ -1,32 +1,40 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Hospital, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowUpRight, Clock, MapPin } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
-import { PROJECT_GROUPS, STATS } from "@/lib/data";
-import { cn } from "@/lib/cn";
+import { STATS } from "@/lib/data";
+import {
+  COMPLETED_PROJECT_CATEGORIES,
+  ONGOING_PROJECT_CATEGORIES,
+  COMPLETED_TOTAL,
+  ONGOING_TOTAL,
+  ALL_PROJECTS_TOTAL,
+} from "@/lib/projects";
 import { PHBackdrop } from "./PHBackdrop";
-import { realStpInstallPhotos } from "@/lib/curatedMedia";
-import { mediaAssets } from "@/lib/media";
-import { MediaPanel } from "./MediaPanel";
 
+/**
+ * Homepage Projects section — curated summary, not a dump.
+ *
+ * Renders one card per industry with:
+ *   - completed + ongoing counts
+ *   - 2 sample named entries pulled from the PDF lists
+ *   - link to the full /projects portfolio
+ *
+ * The full categorized portfolio lives on /projects (ProjectsPortfolio).
+ */
 export function ProjectsTimeline() {
-  const [active, setActive] = useState<string>("all");
-
-  const filtered = useMemo(() => {
-    if (active === "all") return PROJECT_GROUPS;
-    return PROJECT_GROUPS.filter((g) => g.range === active);
-  }, [active]);
-
-  const totalNamedProjects = PROJECT_GROUPS.reduce(
-    (acc, g) => acc + g.projects.length,
-    0,
+  const ongoingByIndustry = new Map(
+    ONGOING_PROJECT_CATEGORIES.map((c) => [c.industry, c]),
   );
 
   return (
-    <section id="projects" className="relative scroll-mt-20 overflow-hidden py-14 sm:py-20">
+    <section
+      id="projects"
+      className="relative scroll-mt-20 overflow-hidden py-14 sm:py-20"
+    >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute right-0 top-0 h-full w-[55%] opacity-50">
           <PHBackdrop className="h-full w-full" />
@@ -44,7 +52,7 @@ export function ProjectsTimeline() {
               <span className="gradient-text-cyan">across the Philippines.</span>
             </>
           }
-          description={`The projects below reflect the named entries currently listed in Aeroasia-Hydromex's existing project history. They sit within the company's broader stated 200+ project experience. ${totalNamedProjects} named entries are shown across four milestone year groups.`}
+          description={`Named entries from Aeroasia-Hydromex's company profile and completed/ongoing project portfolio materials — ${COMPLETED_TOTAL} completed projects across five industries, with ${ONGOING_TOTAL} more awarded or in pipeline.`}
         />
 
         <Reveal>
@@ -62,138 +70,104 @@ export function ProjectsTimeline() {
           </div>
         </Reveal>
 
+        {/* Category summary — premium, not a dump */}
         <Reveal delay={0.05}>
-          <div className="mt-12 flex flex-wrap justify-center gap-2">
-            {[
-              { key: "all", label: "All Years" },
-              ...PROJECT_GROUPS.map((g) => ({ key: g.range, label: g.range })),
-            ].map((opt) => (
-              <button
-                key={opt.key}
-                type="button"
-                onClick={() => setActive(opt.key)}
-                className={cn(
-                  "rounded-full border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] transition-all",
-                  active === opt.key
-                    ? "border-cyan/60 bg-cyan/15 text-white shadow-[0_0_30px_-10px_rgba(0,200,255,0.7)]"
-                    : "border-white/10 bg-white/[0.03] text-silver/90 hover:border-cyan/30 hover:text-white",
-                )}
-              >
-                {opt.label}
-              </button>
-            ))}
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-silver/85">
+            <span className="flex items-center gap-2 text-cyan/95">
+              <span className="size-1.5 rounded-full bg-cyan shadow-[0_0_8px_2px_rgba(0,200,255,0.7)]" />
+              Curated Summary · By Industry
+            </span>
+            <span>
+              {COMPLETED_TOTAL} completed · {ONGOING_TOTAL} ongoing & awarded
+            </span>
           </div>
         </Reveal>
 
-        <div className="relative mt-16">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.35 }}
-              className="space-y-16"
-            >
-              {filtered.map((g, gi) => {
-                const photo = realStpInstallPhotos[gi % realStpInstallPhotos.length];
-                const groupAsset =
-                  mediaAssets.projects[g.range as keyof typeof mediaAssets.projects];
-                const isRight = gi % 2 === 1;
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {COMPLETED_PROJECT_CATEGORIES.map((cat, i) => {
+            const Icon = cat.icon;
+            const ongoing = ongoingByIndustry.get(cat.industry);
+            const samples = cat.projects.slice(0, 2);
 
-                return (
-                  <motion.div
-                    key={g.range}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.55, delay: 0.05 }}
-                    className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12"
-                  >
-                    <div className={cn(isRight && "lg:order-2")}>
-                      <div className="flex items-baseline justify-between gap-4 border-b border-white/10 pb-4">
-                        <div>
-                          <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
-                            <span className="size-1.5 rounded-full bg-cyan shadow-[0_0_8px_2px_rgba(0,200,255,0.7)]" />
-                            Milestone · {String(gi + 1).padStart(2, "0")}
-                          </div>
-                          <h3 className="text-display mt-2 text-3xl font-semibold text-white sm:text-4xl">
-                            {g.range}
-                          </h3>
-                        </div>
-                        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-silver/85">
-                          {g.projects.length} named projects
-                        </span>
-                      </div>
+            return (
+              <motion.div
+                key={cat.industry}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.55, delay: i * 0.04 }}
+                className="card-lift group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-navy-2/65 to-navy/30 p-5"
+              >
+                <header className="flex items-center justify-between gap-2">
+                  <span className="flex size-9 items-center justify-center rounded-lg bg-cyan/10 ring-1 ring-cyan/25">
+                    <Icon className="size-4 text-cyan" />
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-silver/80">
+                    CAT-{String(i + 1).padStart(2, "0")}
+                  </span>
+                </header>
 
-                      <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
-                        {g.projects.map((p, i) => (
-                          <motion.li
-                            key={p}
-                            initial={{ opacity: 0, y: 8 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.4 }}
-                            transition={{ duration: 0.4, delay: gi * 0.05 + i * 0.02 }}
-                            className="card-lift group flex items-start gap-3 rounded-xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-3.5"
-                          >
-                            <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-cyan/10 ring-1 ring-cyan/25">
-                              <Hospital className="size-3.5 text-cyan" />
-                            </div>
-                            <div className="min-w-0">
-                              <div className="text-display text-[13.5px] font-medium leading-snug text-white">
-                                {p}
-                              </div>
-                              <div className="mt-1 flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-silver/80">
-                                <MapPin className="size-3" />
-                                Philippines
-                              </div>
-                            </div>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
+                <h3 className="text-display mt-4 text-balance text-base font-semibold leading-snug text-white">
+                  {cat.label}
+                </h3>
 
-                    <div className={cn(isRight && "lg:order-1")}>
-                      {groupAsset?.enabled ? (
-                        <MediaPanel
-                          asset={groupAsset}
-                          caption={groupAsset.caption ?? g.range}
-                          code={`PORT-${String(gi + 1).padStart(2, "0")}`}
-                          aspectRatio="aspect-[5/4]"
-                        />
-                      ) : (
-                        <figure className="relative overflow-hidden rounded-2xl border border-white/10 bg-navy-2/40 shadow-[0_30px_70px_-40px_rgba(0,157,255,0.45)]">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={photo.src}
-                            alt={photo.alt}
-                            className="aspect-[5/4] w-full object-cover"
-                            loading="lazy"
-                          />
-                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/30 to-transparent" />
-                          <figcaption className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-2 p-4">
-                            <span className="text-display text-sm font-semibold text-clean">
-                              {photo.caption ?? "Aeroasia installation"}
-                            </span>
-                            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-silver/85">
-                              PORT-{String(gi + 1).padStart(2, "0")} · {g.range}
-                            </span>
-                          </figcaption>
-                        </figure>
-                      )}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </AnimatePresence>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-cyan/25 bg-cyan/8 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.16em] text-cyan/95">
+                    {cat.projects.length} completed
+                  </span>
+                  {ongoing && (
+                    <span className="inline-flex items-center gap-1 rounded-full border border-electric/25 bg-electric/8 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.16em] text-ice">
+                      <Clock className="size-2.5" />
+                      {ongoing.projects.length} ongoing
+                    </span>
+                  )}
+                </div>
+
+                <ul className="mt-4 space-y-1.5 text-[12.5px] leading-relaxed text-silver/95">
+                  {samples.map((p) => (
+                    <li key={`${p.name}-${p.year ?? ""}`} className="flex items-start gap-1.5">
+                      <span className="mt-1.5 size-1 shrink-0 rounded-full bg-cyan/70" />
+                      <span className="line-clamp-1">{p.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            );
+          })}
         </div>
 
+        {/* CTA to full portfolio */}
         <Reveal delay={0.1}>
-          <p className="mx-auto mt-12 max-w-3xl text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-silver/85">
-            Named entries from Aeroasia-Hydromex&rsquo;s existing project history ·
-            Part of the company&rsquo;s broader stated 200+ project experience ·
-            Installation photos from Aeroasia&rsquo;s own project portfolio.
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-cyan/25 bg-gradient-to-br from-cyan/10 via-navy-2/55 to-navy/30 p-5 sm:p-6">
+            <div className="min-w-0">
+              <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
+                Full Portfolio · {ALL_PROJECTS_TOTAL} named entries
+              </div>
+              <h3 className="text-display mt-2 text-balance text-lg font-semibold leading-snug text-white sm:text-xl">
+                See every completed, ongoing, and awarded project.
+              </h3>
+              <p className="mt-2 max-w-2xl text-[13.5px] leading-relaxed text-silver/95">
+                The full categorized portfolio &mdash; Healthcare, Commercial,
+                Tourism &amp; Residential, Food, and Light Industry &mdash;
+                with downloadable company-profile and projects PDFs.
+              </p>
+            </div>
+            <Link
+              href="/projects"
+              className="btn-primary inline-flex h-11 shrink-0 items-center gap-2 rounded-full px-5 text-sm font-semibold"
+            >
+              View Full Portfolio
+              <ArrowUpRight className="size-4" />
+            </Link>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.12}>
+          <p className="mx-auto mt-8 max-w-3xl text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-silver/85">
+            <MapPin className="mr-1.5 inline-block size-3 align-[-2px] text-cyan" />
+            Named entries from Aeroasia-Hydromex&rsquo;s company profile and
+            completed/ongoing project portfolio materials · Part of the
+            company&rsquo;s broader nationwide service.
           </p>
         </Reveal>
       </div>

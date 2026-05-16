@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ProjectsTimeline } from "@/components/ProjectsTimeline";
+import { ProjectsPortfolio } from "@/components/ProjectsPortfolio";
 
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "The projects below reflect the named entries currently listed in Aeroasia-Hydromex's existing project history. They sit within the company's broader stated 200+ project experience.",
+    "Named entries from Aeroasia-Hydromex's company profile and completed/ongoing project portfolio materials — Healthcare, Commercial, Tourism & Residential, Food, and Light Industry across the Philippines.",
 };
 
 export default function ProjectsPage() {
@@ -14,7 +14,7 @@ export default function ProjectsPage() {
     <>
       <Navbar />
       <main className="max-w-full overflow-x-clip pt-24 sm:pt-28">
-        <ProjectsTimeline />
+        <ProjectsPortfolio />
       </main>
       <Footer />
     </>

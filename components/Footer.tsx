@@ -1,5 +1,6 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, FileText, Download } from "lucide-react";
 import { CONTACT, NAV_LINKS, SERVICES, SOCIAL } from "@/lib/data";
+import { COMPANY_MATERIALS } from "@/lib/projects";
 import { BrandMark } from "./BrandMark";
 import { FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
 
@@ -127,13 +128,50 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative mx-auto mt-10 flex max-w-7xl flex-col items-start justify-between gap-3 border-t border-white/10 px-5 pt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-silver/80 sm:flex-row sm:items-center sm:px-8">
+      {/* Company materials — downloadable source PDFs */}
+      <div className="relative mx-auto mt-10 max-w-7xl px-5 sm:px-8">
+        <div className="rounded-2xl border border-white/10 bg-navy-2/40 p-4 sm:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3">
+            <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
+              <FileText className="size-3.5" />
+              Company Materials
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-silver/70">
+              Source PDFs · Open in new tab
+            </span>
+          </div>
+          <ul className="mt-3 grid gap-2 md:grid-cols-2">
+            {COMPANY_MATERIALS.map((m) => (
+              <li key={m.code}>
+                <a
+                  href={m.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 transition-colors hover:border-cyan/40 hover:bg-cyan/8"
+                >
+                  <div className="min-w-0">
+                    <div className="text-display text-[13.5px] font-medium text-white">
+                      {m.label}
+                    </div>
+                    <div className="mt-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-silver/70">
+                      {m.code}
+                    </div>
+                  </div>
+                  <Download className="size-4 shrink-0 text-silver/70 transition-colors group-hover:text-cyan" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="relative mx-auto mt-8 flex max-w-7xl flex-col items-start justify-between gap-3 border-t border-white/10 px-5 pt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-silver/80 sm:flex-row sm:items-center sm:px-8">
         <p>
           © {new Date().getFullYear()} Aeroasia-Hydromex Technologies Co. Ltd. ·
           All rights reserved.
         </p>
         <p className="text-silver/45">
-          Industrial · Agricultural · Commercial · Medical · Institutional · Municipal · Laboratory · Food &amp; Beverage
+          Healthcare · Commercial · Tourism &amp; Residential · Food · Light Industry
         </p>
       </div>
     </footer>

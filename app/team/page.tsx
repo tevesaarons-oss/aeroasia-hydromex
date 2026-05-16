@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Users, Building2, ExternalLink } from "lucide-react";
+import { Users, Building2, ExternalLink, UserCircle2 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
@@ -67,6 +67,84 @@ export default function TeamPage() {
                   </div>
                 </div>
               </div>
+            </Reveal>
+
+            {/* Leadership — sourced verbatim from the Aeroasia-Hydromex
+                company profile PDF. No additional bios invented. */}
+            <Reveal delay={0.05}>
+              <section
+                aria-labelledby="leadership-heading"
+                className="relative mt-10 overflow-hidden rounded-2xl border border-cyan/25 bg-gradient-to-br from-cyan/8 via-navy-2/55 to-navy/30 p-5 sm:p-6"
+              >
+                <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-20" />
+                <div className="pointer-events-none absolute -right-24 -top-24 size-56 rounded-full bg-cyan/10 blur-3xl" />
+
+                <header className="relative flex flex-wrap items-end justify-between gap-3 border-b border-white/10 pb-4">
+                  <div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
+                      Leadership
+                    </div>
+                    <h3
+                      id="leadership-heading"
+                      className="text-display mt-2 text-balance text-xl font-semibold leading-snug text-white sm:text-2xl"
+                    >
+                      Engineered by the founders.
+                    </h3>
+                  </div>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-silver/85">
+                    PROFILE · LEAD-01
+                  </span>
+                </header>
+
+                <ul className="relative mt-5 grid gap-4 md:grid-cols-2">
+                  {[
+                    {
+                      name: "Engr. Norlan G. Unson",
+                      role: "General Manager",
+                      bio: "Founder of Aeroasia. Brings extensive industry expertise and visionary leadership — driving the company's strategic growth and innovation with a customer- and environment-centric approach.",
+                      tag: "PME · Engineer",
+                    },
+                    {
+                      name: "Nomer G. Unson",
+                      role: "Research & Development Manager",
+                      bio: "A vital part of the company with a deep understanding of chemical processes — contributes substantially to Aeroasia-Hydromex's innovative and efficient wastewater treatment solutions.",
+                      tag: "R&D",
+                    },
+                  ].map((p) => (
+                    <li
+                      key={p.name}
+                      className="card-lift rounded-xl border border-white/10 bg-navy-2/45 p-5"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan/30 via-electric/20 to-ice/10 ring-1 ring-cyan/40">
+                          <UserCircle2 className="size-5 text-cyan" />
+                        </span>
+                        <div className="min-w-0">
+                          <div className="text-display text-base font-semibold leading-tight text-white">
+                            {p.name}
+                          </div>
+                          <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
+                            {p.role}
+                          </div>
+                        </div>
+                      </div>
+                      <p className="mt-4 text-[13.5px] leading-relaxed text-silver/95">
+                        {p.bio}
+                      </p>
+                      <div className="mt-3 inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.22em] text-silver/75">
+                        <span className="size-1 rounded-full bg-cyan/80" />
+                        {p.tag}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="relative mt-4 font-mono text-[10px] uppercase leading-relaxed tracking-[0.22em] text-silver/75">
+                  Leadership profiles sourced from the Aeroasia-Hydromex
+                  company profile · Full team structure visible in the
+                  organizational chart below.
+                </p>
+              </section>
             </Reveal>
 
             {/* Organizational chart panel */}
