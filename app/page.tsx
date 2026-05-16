@@ -76,7 +76,7 @@ export default function Home() {
         <SectionDivider
           stage="05"
           label="Project Portfolio"
-          annotation="From sector coverage to 49 named projects across the Philippines"
+          annotation="From sector coverage to 177 named project entries across the Philippines"
         />
         <ProjectsTimeline />
 

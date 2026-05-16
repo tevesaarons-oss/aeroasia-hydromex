@@ -117,7 +117,7 @@ export function Hero() {
             className="mt-8 flex flex-wrap items-center gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-silver/95"
           >
             {[
-              "200+ Projects",
+              "138+ Completed Projects",
               "15+ Years",
               "70+ Employees Nationwide",
               "DAO-Compliant Systems",

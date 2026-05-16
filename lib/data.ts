@@ -34,11 +34,29 @@ import {
 
 export type Stat = { value: string; label: string };
 
+/**
+ * Hero-level company stats. Broader marketing framing — kept separate
+ * from the PDF-grounded project counts so the two clusters never
+ * contradict each other. "138+ Completed" comes from the dedicated
+ * completed/ongoing projects PDF.
+ */
 export const STATS: Stat[] = [
-  { value: "200+", label: "Completed Projects" },
+  { value: "138+", label: "Completed Projects" },
   { value: "15+", label: "Years of Expertise" },
   { value: "70+", label: "Employees Nationwide" },
   { value: "Nationwide", label: "Service Coverage" },
+];
+
+/**
+ * PDF-grounded project counts. Used in project sections so the numbers
+ * match `lib/projects.ts` exactly (which derives the totals from the
+ * source PDF lists). Never mixed with the broader STATS above.
+ */
+export const PROJECT_STATS: Stat[] = [
+  { value: "177", label: "Named Project Entries" },
+  { value: "138", label: "Completed Projects" },
+  { value: "39", label: "Ongoing / Awarded" },
+  { value: "15+", label: "Years of Expertise" },
 ];
 
 export type Problem = { icon: LucideIcon; title: string; desc: string };

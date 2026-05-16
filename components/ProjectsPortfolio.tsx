@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Clock, MapPin, Download, FileText, ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
-import { STATS } from "@/lib/data";
+import { PROJECT_STATS } from "@/lib/data";
 import {
   COMPLETED_PROJECT_CATEGORIES,
   ONGOING_PROJECT_CATEGORIES,
@@ -60,13 +60,16 @@ export function ProjectsPortfolio() {
 
         {/* Stats */}
         <Reveal>
-          <div className="mt-12 grid grid-cols-2 gap-3 rounded-2xl border border-white/10 bg-navy-2/50 p-6 sm:grid-cols-4">
-            {STATS.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-display gradient-text-cyan text-3xl font-semibold sm:text-4xl">
+          <div className="mt-12 grid auto-rows-fr grid-cols-2 gap-3 rounded-2xl border border-white/10 bg-navy-2/50 p-4 sm:gap-4 sm:p-6 lg:grid-cols-4">
+            {PROJECT_STATS.map((s) => (
+              <div
+                key={s.label}
+                className="flex flex-col items-center justify-center rounded-xl bg-white/[0.02] px-3 py-4 text-center"
+              >
+                <div className="text-display gradient-text-cyan text-balance text-2xl font-semibold leading-none sm:text-3xl lg:text-4xl">
                   {s.value}
                 </div>
-                <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-silver/85">
+                <div className="mt-2 text-balance font-mono text-[10px] uppercase leading-snug tracking-[0.16em] text-silver/85 sm:tracking-[0.18em]">
                   {s.label}
                 </div>
               </div>
