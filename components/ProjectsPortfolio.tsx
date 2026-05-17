@@ -34,7 +34,7 @@ export function ProjectsPortfolio() {
   return (
     <section
       id="projects"
-      className="relative scroll-mt-20 overflow-hidden py-14 sm:py-20"
+      className="relative scroll-mt-20 overflow-hidden py-8 sm:py-20"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute right-0 top-0 h-full w-[55%] opacity-50">
@@ -60,16 +60,16 @@ export function ProjectsPortfolio() {
 
         {/* Stats */}
         <Reveal>
-          <div className="mt-12 grid auto-rows-fr grid-cols-2 gap-3 rounded-2xl border border-white/10 bg-navy-2/50 p-4 sm:gap-4 sm:p-6 lg:grid-cols-4">
+          <div className="mt-6 grid auto-rows-fr grid-cols-2 gap-2.5 rounded-2xl border border-white/10 bg-navy-2/50 p-3 sm:mt-12 sm:gap-4 sm:p-6 lg:grid-cols-4">
             {PROJECT_STATS.map((s) => (
               <div
                 key={s.label}
-                className="flex flex-col items-center justify-center rounded-xl bg-white/[0.02] px-3 py-4 text-center"
+                className="flex flex-col items-center justify-center rounded-xl bg-white/[0.02] px-2 py-3 text-center sm:px-3 sm:py-4"
               >
-                <div className="text-display gradient-text-cyan text-balance text-2xl font-semibold leading-none sm:text-3xl lg:text-4xl">
+                <div className="text-display gradient-text-cyan text-balance text-[22px] font-semibold leading-none sm:text-3xl lg:text-4xl">
                   {s.value}
                 </div>
-                <div className="mt-2 text-balance font-mono text-[10px] uppercase leading-snug tracking-[0.16em] text-silver/85 sm:tracking-[0.18em]">
+                <div className="mt-1.5 text-balance font-mono text-[10px] uppercase leading-snug tracking-[0.14em] text-silver/85 sm:mt-2 sm:tracking-[0.18em]">
                   {s.label}
                 </div>
               </div>
@@ -79,7 +79,7 @@ export function ProjectsPortfolio() {
 
         {/* Industry-count summary bar */}
         <Reveal delay={0.04}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-2xl border border-white/10 bg-navy-2/40 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.18em] text-silver/85">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-2xl border border-white/10 bg-navy-2/40 px-3 py-2.5 font-mono text-[10px] uppercase tracking-[0.14em] text-silver/85 sm:mt-8 sm:gap-x-4 sm:px-4 sm:py-3 sm:tracking-[0.18em]">
             <span className="text-cyan/85">By industry</span>
             <span className="text-silver/40">·</span>
             {COMPLETED_PROJECT_CATEGORIES.map((c) => (
@@ -97,7 +97,7 @@ export function ProjectsPortfolio() {
 
         {/* Status filter */}
         <Reveal delay={0.06}>
-          <div className="mt-10 flex flex-wrap justify-center gap-2">
+          <div className="mt-5 flex flex-wrap justify-center gap-2 sm:mt-10">
             {(
               [
                 {
@@ -132,7 +132,7 @@ export function ProjectsPortfolio() {
         </Reveal>
 
         {/* Category sections */}
-        <div className="mt-14 space-y-12">
+        <div className="mt-8 space-y-8 sm:mt-14 sm:space-y-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={filter}
@@ -140,7 +140,7 @@ export function ProjectsPortfolio() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.3 }}
-              className="space-y-12"
+              className="space-y-8 sm:space-y-12"
             >
               {sections.map((cat, gi) => (
                 <CategoryBlock key={`${cat.status}-${cat.industry}`} category={cat} index={gi} />
@@ -153,7 +153,7 @@ export function ProjectsPortfolio() {
         <CompanyMaterialsBlock />
 
         <Reveal delay={0.1}>
-          <p className="mx-auto mt-10 max-w-3xl text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-silver/85">
+          <p className="mx-auto mt-6 max-w-3xl text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-silver/85 sm:mt-10">
             Named entries reflect the company&rsquo;s published project
             history in the source PDFs · Locations and years are preserved
             as listed.
@@ -179,11 +179,11 @@ function CategoryBlock({
   return (
     <Reveal delay={index * 0.04}>
       <section className="relative">
-        <header className="flex flex-wrap items-end justify-between gap-3 border-b border-white/10 pb-4">
+        <header className="flex flex-wrap items-end justify-between gap-3 border-b border-white/10 pb-3 sm:pb-4">
           <div className="flex items-center gap-3">
             <span
               className={cn(
-                "flex size-11 items-center justify-center rounded-xl ring-1",
+                "flex size-10 items-center justify-center rounded-xl ring-1 sm:size-11",
                 isOngoing
                   ? "bg-electric/15 ring-electric/35"
                   : "bg-cyan/10 ring-cyan/30",
@@ -191,7 +191,7 @@ function CategoryBlock({
             >
               <Icon
                 className={cn(
-                  "size-5",
+                  "size-4 sm:size-5",
                   isOngoing ? "text-ice" : "text-cyan",
                 )}
               />
@@ -215,7 +215,7 @@ function CategoryBlock({
                   </>
                 )}
               </div>
-              <h3 className="text-display mt-1 text-balance text-2xl font-semibold leading-tight text-white sm:text-3xl">
+              <h3 className="text-display mt-1 text-balance text-xl font-semibold leading-tight text-white sm:text-3xl">
                 {category.label}
               </h3>
             </div>
@@ -226,11 +226,11 @@ function CategoryBlock({
           </span>
         </header>
 
-        <p className="mt-3 max-w-3xl text-[14px] leading-relaxed text-silver/95">
+        <p className="mt-2 max-w-3xl text-[13.5px] leading-relaxed text-silver/95 sm:mt-3 sm:text-[14px]">
           {category.blurb}
         </p>
 
-        <ul className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-4 grid gap-2.5 sm:mt-6 sm:grid-cols-2 lg:grid-cols-3">
           {category.projects.map((p, i) => (
             <ProjectCard
               key={`${p.name}-${p.year ?? "x"}-${i}`}
@@ -300,7 +300,7 @@ function ProjectCard({
 function CompanyMaterialsBlock() {
   return (
     <Reveal delay={0.08}>
-      <div className="mt-16 overflow-hidden rounded-2xl border border-cyan/25 bg-gradient-to-br from-cyan/8 via-navy-2/55 to-navy/40 p-5 sm:p-7">
+      <div className="mt-10 overflow-hidden rounded-2xl border border-cyan/25 bg-gradient-to-br from-cyan/8 via-navy-2/55 to-navy/40 p-5 sm:mt-16 sm:p-7">
         <header className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
           <div>
             <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">

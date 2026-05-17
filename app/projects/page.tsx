@@ -13,7 +13,7 @@ export default function ProjectsPage() {
   return (
     <>
       <Navbar />
-      <main className="max-w-full overflow-x-clip pt-24 sm:pt-28">
+      <main className="max-w-full overflow-x-clip pt-20 sm:pt-28">
         <ProjectsPortfolio />
       </main>
       <Footer />
