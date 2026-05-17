@@ -44,8 +44,19 @@ export function ProjectsPortfolio() {
         <div className="absolute inset-0 bg-blueprint-fine opacity-30" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+      {/*
+        Mobile reorders content to surface real project entries fast:
+          heading → compact stats chip → filter tabs → category sections
+          → full stats grid → industry summary bar → materials → footnote
+
+        Desktop keeps the original premium order. We achieve this by
+        wrapping the page in `flex flex-col` at mobile (where `order-N`
+        is honoured) and switching to `sm:block` at desktop (where the
+        DOM order — which matches the desktop sequence — takes over).
+      */}
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-5 px-5 sm:block sm:gap-0 sm:px-8">
         <SectionHeading
+          className="order-1"
           eyebrow="National Project Portfolio"
           title={
             <>
@@ -58,9 +69,22 @@ export function ProjectsPortfolio() {
           description={`Named entries from Aeroasia-Hydromex's company profile and completed/ongoing project portfolio materials. ${COMPLETED_TOTAL} completed projects across five industries, with ${ONGOING_TOTAL} more awarded or in pipeline.`}
         />
 
-        {/* Stats */}
-        <Reveal>
-          <div className="mt-6 grid auto-rows-fr grid-cols-2 gap-2.5 rounded-2xl border border-white/10 bg-navy-2/50 p-3 sm:mt-12 sm:gap-4 sm:p-6 lg:grid-cols-4">
+        {/* Compact stats chip — mobile only, sits right under the heading */}
+        <div className="order-2 flex justify-center sm:hidden">
+          <div className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-cyan/25 bg-cyan/5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-silver/95">
+            <span className="text-cyan/95">
+              {ALL_PROJECTS_TOTAL} named entries
+            </span>
+            <span className="text-silver/40">·</span>
+            <span>{COMPLETED_TOTAL} completed</span>
+            <span className="text-silver/40">·</span>
+            <span>{ONGOING_TOTAL} ongoing</span>
+          </div>
+        </div>
+
+        {/* Stats grid — desktop position 2, mobile order-5 */}
+        <Reveal className="order-5 sm:order-none">
+          <div className="grid auto-rows-fr grid-cols-2 gap-2.5 rounded-2xl border border-white/10 bg-navy-2/50 p-3 sm:mt-12 sm:gap-4 sm:p-6 lg:grid-cols-4">
             {PROJECT_STATS.map((s) => (
               <div
                 key={s.label}
@@ -77,9 +101,9 @@ export function ProjectsPortfolio() {
           </div>
         </Reveal>
 
-        {/* Industry-count summary bar */}
-        <Reveal delay={0.04}>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-2xl border border-white/10 bg-navy-2/40 px-3 py-2.5 font-mono text-[10px] uppercase tracking-[0.14em] text-silver/85 sm:mt-8 sm:gap-x-4 sm:px-4 sm:py-3 sm:tracking-[0.18em]">
+        {/* Industry-count summary bar — desktop position 3, mobile order-6 */}
+        <Reveal delay={0.04} className="order-6 sm:order-none">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-2xl border border-white/10 bg-navy-2/40 px-3 py-2.5 font-mono text-[10px] uppercase tracking-[0.14em] text-silver/85 sm:mt-8 sm:gap-x-4 sm:px-4 sm:py-3 sm:tracking-[0.18em]">
             <span className="text-cyan/85">By industry</span>
             <span className="text-silver/40">·</span>
             {COMPLETED_PROJECT_CATEGORIES.map((c) => (
@@ -95,9 +119,9 @@ export function ProjectsPortfolio() {
           </div>
         </Reveal>
 
-        {/* Status filter */}
-        <Reveal delay={0.06}>
-          <div className="mt-5 flex flex-wrap justify-center gap-2 sm:mt-10">
+        {/* Status filter — desktop position 4, mobile order-3 */}
+        <Reveal delay={0.06} className="order-3 sm:order-none">
+          <div className="flex flex-wrap justify-center gap-2 sm:mt-10">
             {(
               [
                 {
@@ -119,7 +143,7 @@ export function ProjectsPortfolio() {
                 type="button"
                 onClick={() => setFilter(opt.key)}
                 className={cn(
-                  "rounded-full border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] transition-all",
+                  "rounded-full border px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-all sm:px-4 sm:py-2 sm:tracking-[0.16em]",
                   filter === opt.key
                     ? "border-cyan/60 bg-cyan/15 text-white shadow-[0_0_30px_-10px_rgba(0,200,255,0.7)]"
                     : "border-white/10 bg-white/[0.03] text-silver/90 hover:border-cyan/30 hover:text-white",
@@ -131,8 +155,8 @@ export function ProjectsPortfolio() {
           </div>
         </Reveal>
 
-        {/* Category sections */}
-        <div className="mt-8 space-y-8 sm:mt-14 sm:space-y-12">
+        {/* Category sections — desktop position 5, mobile order-4 */}
+        <div className="order-4 space-y-8 sm:order-none sm:mt-14 sm:space-y-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={filter}
@@ -150,10 +174,12 @@ export function ProjectsPortfolio() {
         </div>
 
         {/* Company Materials — downloadable PDFs */}
-        <CompanyMaterialsBlock />
+        <div className="order-7 sm:order-none">
+          <CompanyMaterialsBlock />
+        </div>
 
-        <Reveal delay={0.1}>
-          <p className="mx-auto mt-6 max-w-3xl text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-silver/85 sm:mt-10">
+        <Reveal delay={0.1} className="order-8 sm:order-none">
+          <p className="mx-auto max-w-3xl text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-silver/85 sm:mt-10">
             Named entries reflect the company&rsquo;s published project
             history in the source PDFs · Locations and years are preserved
             as listed.
@@ -300,7 +326,7 @@ function ProjectCard({
 function CompanyMaterialsBlock() {
   return (
     <Reveal delay={0.08}>
-      <div className="mt-10 overflow-hidden rounded-2xl border border-cyan/25 bg-gradient-to-br from-cyan/8 via-navy-2/55 to-navy/40 p-5 sm:mt-16 sm:p-7">
+      <div className="overflow-hidden rounded-2xl border border-cyan/25 bg-gradient-to-br from-cyan/8 via-navy-2/55 to-navy/40 p-5 sm:mt-16 sm:p-7">
         <header className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
           <div>
             <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">

@@ -43,8 +43,15 @@ export function ProjectsTimeline() {
         <div className="absolute inset-0 bg-blueprint-fine opacity-30" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+      {/*
+        Mobile reorders to put real content first:
+          heading → compact chip → category cards → CTA → stats → footnote
+        Desktop keeps the original premium order via `sm:block`, which
+        ignores `order-N` and falls back to DOM flow.
+      */}
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-5 px-5 sm:block sm:gap-0 sm:px-8">
         <SectionHeading
+          className="order-1"
           eyebrow="National Project Portfolio"
           title={
             <>
@@ -55,8 +62,22 @@ export function ProjectsTimeline() {
           description={`Named entries from Aeroasia-Hydromex's company profile and completed/ongoing project portfolio materials — ${COMPLETED_TOTAL} completed projects across five industries, with ${ONGOING_TOTAL} more awarded or in pipeline.`}
         />
 
-        <Reveal>
-          <div className="mt-6 grid auto-rows-fr grid-cols-2 gap-2.5 rounded-2xl border border-white/10 bg-navy-2/50 p-3 sm:mt-12 sm:gap-4 sm:p-6 lg:grid-cols-4">
+        {/* Compact stats chip — mobile only */}
+        <div className="order-2 flex justify-center sm:hidden">
+          <div className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-cyan/25 bg-cyan/5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-silver/95">
+            <span className="text-cyan/95">
+              {ALL_PROJECTS_TOTAL} named entries
+            </span>
+            <span className="text-silver/40">·</span>
+            <span>{COMPLETED_TOTAL} completed</span>
+            <span className="text-silver/40">·</span>
+            <span>{ONGOING_TOTAL} ongoing</span>
+          </div>
+        </div>
+
+        {/* Stats grid — desktop position 2, mobile order-5 */}
+        <Reveal className="order-5 sm:order-none">
+          <div className="grid auto-rows-fr grid-cols-2 gap-2.5 rounded-2xl border border-white/10 bg-navy-2/50 p-3 sm:mt-12 sm:gap-4 sm:p-6 lg:grid-cols-4">
             {PROJECT_STATS.map((s) => (
               <div
                 key={s.label}
@@ -73,9 +94,9 @@ export function ProjectsTimeline() {
           </div>
         </Reveal>
 
-        {/* Category summary — premium, not a dump */}
-        <Reveal delay={0.05}>
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-silver/85 sm:mt-10">
+        {/* Curated-summary label bar — desktop only (chip handles mobile) */}
+        <Reveal delay={0.05} className="hidden sm:block sm:order-none">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-silver/85 sm:mt-10">
             <span className="flex items-center gap-2 text-cyan/95">
               <span className="size-1.5 rounded-full bg-cyan shadow-[0_0_8px_2px_rgba(0,200,255,0.7)]" />
               Curated Summary · By Industry
@@ -86,7 +107,8 @@ export function ProjectsTimeline() {
           </div>
         </Reveal>
 
-        <div className="mt-4 grid gap-3 sm:mt-6 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {/* Category cards — desktop position 4, mobile order-3 (first content) */}
+        <div className="order-3 grid grid-cols-1 gap-3 sm:order-none sm:mt-6 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5">
           {COMPLETED_PROJECT_CATEGORIES.map((cat, i) => {
             const Icon = cat.icon;
             const ongoing = ongoingByIndustry.get(cat.industry);
@@ -139,9 +161,9 @@ export function ProjectsTimeline() {
           })}
         </div>
 
-        {/* CTA to full portfolio */}
-        <Reveal delay={0.1}>
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-cyan/25 bg-gradient-to-br from-cyan/10 via-navy-2/55 to-navy/30 p-5 sm:mt-10 sm:p-6">
+        {/* CTA to full portfolio — desktop position 5, mobile order-4 */}
+        <Reveal delay={0.1} className="order-4 sm:order-none">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-cyan/25 bg-gradient-to-br from-cyan/10 via-navy-2/55 to-navy/30 p-5 sm:mt-10 sm:p-6">
             <div className="min-w-0">
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
                 Full Portfolio · {ALL_PROJECTS_TOTAL} named entries
@@ -165,8 +187,9 @@ export function ProjectsTimeline() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.12}>
-          <p className="mx-auto mt-6 max-w-3xl text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-silver/85 sm:mt-8">
+        {/* Footnote — mobile order-6, desktop position 6 */}
+        <Reveal delay={0.12} className="order-6 sm:order-none">
+          <p className="mx-auto max-w-3xl text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-silver/85 sm:mt-8">
             <MapPin className="mr-1.5 inline-block size-3 align-[-2px] text-cyan" />
             Named entries from Aeroasia-Hydromex&rsquo;s company profile and
             completed/ongoing project portfolio materials · Part of the
