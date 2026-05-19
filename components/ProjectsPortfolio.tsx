@@ -32,7 +32,7 @@ export function ProjectsPortfolio() {
   return (
     <section
       id="projects"
-      className="relative scroll-mt-20 overflow-hidden py-8 sm:py-20"
+      className="relative scroll-mt-20 overflow-hidden py-4 sm:py-20"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute right-0 top-0 h-full w-[55%] opacity-50">
@@ -52,8 +52,9 @@ export function ProjectsPortfolio() {
         is honoured) and switching to `sm:block` at desktop (where the
         DOM order — which matches the desktop sequence — takes over).
       */}
-      <div className="relative mx-auto flex max-w-7xl flex-col gap-5 px-5 sm:block sm:gap-0 sm:px-8">
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-4 px-5 sm:block sm:gap-0 sm:px-8">
         <SectionHeading
+          eager
           className="order-1"
           eyebrow="National Project Portfolio"
           title={
@@ -77,7 +78,7 @@ export function ProjectsPortfolio() {
         </div>
 
         {/* Stats grid — desktop position 2, mobile order-5 */}
-        <Reveal className="order-5 sm:order-none">
+        <Reveal eager className="order-5 sm:order-none">
           <div className="grid auto-rows-fr grid-cols-2 gap-2.5 rounded-2xl border border-white/10 bg-navy-2/50 p-3 sm:mt-12 sm:gap-4 sm:p-6 lg:grid-cols-4">
             {PROJECT_STATS.map((s) => (
               <div
@@ -96,7 +97,7 @@ export function ProjectsPortfolio() {
         </Reveal>
 
         {/* Industry-count summary bar — desktop position 3, mobile order-6 */}
-        <Reveal delay={0.04} className="order-6 sm:order-none">
+        <Reveal eager delay={0.04} className="order-6 sm:order-none">
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-2xl border border-white/10 bg-navy-2/40 px-3 py-2.5 font-mono text-[10px] uppercase tracking-[0.14em] text-silver/85 sm:mt-8 sm:gap-x-4 sm:px-4 sm:py-3 sm:tracking-[0.18em]">
             <span className="text-cyan/85">By industry</span>
             <span className="text-silver/40">·</span>
@@ -114,7 +115,7 @@ export function ProjectsPortfolio() {
         </Reveal>
 
         {/* Status filter — desktop position 4, mobile order-3 */}
-        <Reveal delay={0.06} className="order-3 sm:order-none">
+        <Reveal eager delay={0.06} className="order-3 sm:order-none">
           <div className="flex flex-wrap justify-center gap-2 sm:mt-10">
             {(
               [
@@ -145,17 +146,22 @@ export function ProjectsPortfolio() {
 
         {/* Category sections — desktop position 5, mobile order-4 */}
         <div className="order-4 space-y-8 sm:order-none sm:mt-14 sm:space-y-12">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={filter}
-              initial={{ opacity: 0, y: 10 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.25 }}
               className="space-y-8 sm:space-y-12"
             >
               {sections.map((cat, gi) => (
-                <CategoryBlock key={`${cat.status}-${cat.industry}`} category={cat} index={gi} />
+                <CategoryBlock
+                  key={`${cat.status}-${cat.industry}`}
+                  category={cat}
+                  index={gi}
+                  eager={gi === 0}
+                />
               ))}
             </motion.div>
           </AnimatePresence>
@@ -183,15 +189,17 @@ export function ProjectsPortfolio() {
 function CategoryBlock({
   category,
   index,
+  eager = false,
 }: {
   category: ProjectCategory;
   index: number;
+  eager?: boolean;
 }) {
   const Icon = category.icon;
   const isOngoing = category.status === "ongoing";
 
   return (
-    <Reveal delay={index * 0.04}>
+    <Reveal eager={eager} delay={index * 0.04}>
       <section className="relative">
         <header className="flex flex-wrap items-end justify-between gap-3 border-b border-white/10 pb-3 sm:pb-4">
           <div className="flex items-center gap-3">

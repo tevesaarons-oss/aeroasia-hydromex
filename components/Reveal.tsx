@@ -9,6 +9,13 @@ type RevealProps = {
   y?: number;
   className?: string;
   once?: boolean;
+  /**
+   * When true, the element renders visible from the start with no
+   * fade-in animation. Use for above-the-fold content where waiting
+   * for framer-motion JS to hydrate would leave the area blank — for
+   * example, the Projects page heading on mobile Safari.
+   */
+  eager?: boolean;
 };
 
 const variants: Variants = {
@@ -30,7 +37,14 @@ export function Reveal({
   y = 24,
   className,
   once = true,
+  eager = false,
 }: RevealProps) {
+  // Eager mode: bypass framer-motion entirely so the SSR'd HTML is
+  // already visible (no opacity:0 inline style waiting on JS).
+  if (eager) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       initial="hidden"
