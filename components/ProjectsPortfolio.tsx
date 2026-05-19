@@ -9,9 +9,7 @@ import { PROJECT_STATS } from "@/lib/data";
 import {
   COMPLETED_PROJECT_CATEGORIES,
   ONGOING_PROJECT_CATEGORIES,
-  COMPLETED_TOTAL,
   ONGOING_TOTAL,
-  ALL_PROJECTS_TOTAL,
   COMPANY_MATERIALS,
   type ProjectCategory,
   type ProjectEntry,
@@ -66,19 +64,15 @@ export function ProjectsPortfolio() {
               </span>
             </>
           }
-          description={`Named entries from Aeroasia-Hydromex's company profile and completed/ongoing project portfolio materials. ${COMPLETED_TOTAL} completed projects across five industries, with ${ONGOING_TOTAL} more awarded or in pipeline.`}
+          description={`200+ completed projects across five industries, with ${ONGOING_TOTAL} more ongoing or awarded. Project listings below are organized from Aeroasia-Hydromex's company profile and completed/ongoing project portfolio materials.`}
         />
 
         {/* Compact stats chip — mobile only, sits right under the heading */}
         <div className="order-2 flex justify-center sm:hidden">
           <div className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-cyan/25 bg-cyan/5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-silver/95">
-            <span className="text-cyan/95">
-              {ALL_PROJECTS_TOTAL} named entries
-            </span>
+            <span className="text-cyan/95">200+ completed</span>
             <span className="text-silver/40">·</span>
-            <span>{COMPLETED_TOTAL} completed</span>
-            <span className="text-silver/40">·</span>
-            <span>{ONGOING_TOTAL} ongoing</span>
+            <span>{ONGOING_TOTAL} ongoing/awarded</span>
           </div>
         </div>
 
@@ -124,14 +118,8 @@ export function ProjectsPortfolio() {
           <div className="flex flex-wrap justify-center gap-2 sm:mt-10">
             {(
               [
-                {
-                  key: "all" as StatusFilter,
-                  label: `All · ${ALL_PROJECTS_TOTAL}`,
-                },
-                {
-                  key: "completed" as StatusFilter,
-                  label: `Completed · ${COMPLETED_TOTAL}`,
-                },
+                { key: "all" as StatusFilter, label: "All" },
+                { key: "completed" as StatusFilter, label: "Completed" },
                 {
                   key: "ongoing" as StatusFilter,
                   label: `Ongoing & Awarded · ${ONGOING_TOTAL}`,
@@ -180,9 +168,9 @@ export function ProjectsPortfolio() {
 
         <Reveal delay={0.1} className="order-8 sm:order-none">
           <p className="mx-auto max-w-3xl text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-silver/85 sm:mt-10">
-            Named entries reflect the company&rsquo;s published project
-            history in the source PDFs · Locations and years are preserved
-            as listed.
+            Project listings are organized from Aeroasia-Hydromex&rsquo;s
+            company profile and completed/ongoing project portfolio
+            materials · Locations and years preserved as listed.
           </p>
         </Reveal>
       </div>
