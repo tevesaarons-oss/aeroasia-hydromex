@@ -36,23 +36,23 @@ export type Stat = { value: string; label: string };
 
 /**
  * Hero-level company stats. Client-approved public-facing claim is
- * "200+ Completed Projects" — this is the consistent headline figure
+ * "300+ Completed Projects" — this is the consistent headline figure
  * used across the site.
  */
 export const STATS: Stat[] = [
-  { value: "200+", label: "Completed Projects" },
+  { value: "300+", label: "Completed Projects" },
   { value: "15+", label: "Years of Expertise" },
   { value: "70+", label: "Employees Nationwide" },
   { value: "Nationwide", label: "Service Coverage" },
 ];
 
 /**
- * Projects-page stats. Same "200+" headline claim, plus the public
+ * Projects-page stats. Same "300+" headline claim, plus the public
  * ongoing/awarded count. The detailed PDF portfolio still lives in
  * `lib/projects.ts`; it is not exposed as a headline stat.
  */
 export const PROJECT_STATS: Stat[] = [
-  { value: "200+", label: "Completed Projects" },
+  { value: "300+", label: "Completed Projects" },
   { value: "39", label: "Ongoing / Awarded" },
   { value: "15+", label: "Years of Expertise" },
   { value: "70+", label: "Employees Nationwide" },

@@ -57,13 +57,13 @@ export function ProjectsTimeline() {
               <span className="gradient-text-cyan">across the Philippines.</span>
             </>
           }
-          description={`200+ completed projects across five industries, with ${ONGOING_TOTAL} more ongoing or awarded. Project listings below are organized from Aeroasia-Hydromex's company profile and completed/ongoing project portfolio materials.`}
+          description={`300+ completed projects across five industries, with ${ONGOING_TOTAL} more ongoing or awarded. Project listings below are organized from Aeroasia-Hydromex's company profile and completed/ongoing project portfolio materials.`}
         />
 
         {/* Compact stats chip — mobile only */}
         <div className="order-2 flex justify-center sm:hidden">
           <div className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-cyan/25 bg-cyan/5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-silver/95">
-            <span className="text-cyan/95">200+ completed</span>
+            <span className="text-cyan/95">300+ completed</span>
             <span className="text-silver/40">·</span>
             <span>{ONGOING_TOTAL} ongoing/awarded</span>
           </div>
@@ -96,7 +96,7 @@ export function ProjectsTimeline() {
               Curated Summary · By Industry
             </span>
             <span>
-              200+ completed · {ONGOING_TOTAL} ongoing & awarded
+              300+ completed · {ONGOING_TOTAL} ongoing & awarded
             </span>
           </div>
         </Reveal>
@@ -160,7 +160,7 @@ export function ProjectsTimeline() {
           <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-cyan/25 bg-gradient-to-br from-cyan/10 via-navy-2/55 to-navy/30 p-5 sm:mt-10 sm:p-6">
             <div className="min-w-0">
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
-                Full Portfolio · 200+ Completed Projects
+                Full Portfolio · 300+ Completed Projects
               </div>
               <h3 className="text-display mt-2 text-balance text-lg font-semibold leading-snug text-white sm:text-xl">
                 See every completed, ongoing, and awarded project.

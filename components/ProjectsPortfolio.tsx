@@ -65,13 +65,13 @@ export function ProjectsPortfolio() {
               </span>
             </>
           }
-          description={`200+ completed projects across five industries, with ${ONGOING_TOTAL} more ongoing or awarded. Project listings below are organized from Aeroasia-Hydromex's company profile and completed/ongoing project portfolio materials.`}
+          description={`300+ completed projects across five industries, with ${ONGOING_TOTAL} more ongoing or awarded. Project listings below are organized from Aeroasia-Hydromex's company profile and completed/ongoing project portfolio materials.`}
         />
 
         {/* Compact stats chip — mobile only, sits right under the heading */}
         <div className="order-2 flex justify-center sm:hidden">
           <div className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-cyan/25 bg-cyan/5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-silver/95">
-            <span className="text-cyan/95">200+ completed</span>
+            <span className="text-cyan/95">300+ completed</span>
             <span className="text-silver/40">·</span>
             <span>{ONGOING_TOTAL} ongoing/awarded</span>
           </div>
