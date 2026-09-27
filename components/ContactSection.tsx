@@ -68,7 +68,7 @@ export function ContactSection() {
                     <span className="gradient-text-cyan">Site Assessment.</span>
                   </h2>
                   <p className="mt-2 text-[14px] leading-relaxed text-clean/90">
-                    Tell us about your facility. The fastest reply is via{" "}
+                    Tell {CONTACT.name} about your facility. Connect via{" "}
                     <a
                       href={SOCIAL.messengerUrl}
                       target="_blank"
@@ -178,16 +178,15 @@ export function ContactSection() {
             <div className="grid gap-4">
               <ContactChannel
                 icon={FacebookIcon}
-                title="Message us on Facebook"
+                title={`Contact ${CONTACT.name}`}
                 code="CH-01 · Primary"
                 href={SOCIAL.facebookUrl}
-                cta="Open Facebook Page"
+                cta="Contact Nequi on Facebook"
                 accent
               >
                 <p className="text-[13.5px] leading-relaxed text-silver/95">
-                  {SOCIAL.pageName} &mdash; the active Facebook page where
-                  recent set-ups, project materials, and live updates are
-                  posted. Message us on Facebook for inquiries.
+                  {CONTACT.name} is the contact for all inquiries. Send your
+                  project requirements through Nequi&rsquo;s Facebook profile.
                 </p>
               </ContactChannel>
 
@@ -196,11 +195,11 @@ export function ContactSection() {
                 title="Chat on Messenger"
                 code="CH-02"
                 href={SOCIAL.messengerUrl}
-                cta="Start Messenger Chat"
+                cta="Open Nequi’s Facebook / Messenger"
               >
                 <p className="text-[13.5px] leading-relaxed text-silver/95">
-                  Direct line to the team. Fastest path for quotes,
-                  site-walk scheduling, and follow-up.
+                  Connect with {CONTACT.name} for quotes, site assessment
+                  requests, and follow-up.
                 </p>
               </ContactChannel>
 
@@ -228,8 +227,7 @@ export function ContactSection() {
                 cta={`Call ${CONTACT.phone}`}
               >
                 <p className="text-[13.5px] leading-relaxed text-silver/95">
-                  Direct mobile line for project inquiries and on-call
-                  troubleshooting.
+                  Call {CONTACT.name} for project inquiries.
                 </p>
               </ContactChannel>
 
@@ -250,7 +248,7 @@ export function ContactSection() {
               <div className="rounded-2xl border border-white/10 bg-navy-2/30 p-5">
                 <div className="flex items-center justify-between border-b border-white/10 pb-3">
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-silver/85">
-                    Company Profile Contacts
+                    Company Profile Reference
                   </div>
                   <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-silver/70">
                     REF · PROFILE
@@ -280,30 +278,10 @@ export function ContactSection() {
                       City, Laguna, Philippines 4023
                     </dd>
                   </div>
-                  <div>
-                    <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
-                      Profile Emails
-                    </dt>
-                    <dd className="break-all text-silver/95">
-                      <a
-                        href="mailto:n_unson@yahoo.com"
-                        className="hover:text-cyan"
-                      >
-                        n_unson@yahoo.com
-                      </a>
-                      {" · "}
-                      <a
-                        href={`mailto:${CONTACT.primaryEmail}`}
-                        className="hover:text-cyan"
-                      >
-                        {CONTACT.primaryEmail}
-                      </a>
-                    </dd>
-                  </div>
                 </dl>
                 <p className="mt-3 font-mono text-[10px] uppercase leading-relaxed tracking-[0.22em] text-silver/70">
-                  For fastest reply, please use Facebook, Messenger, or
-                  WhatsApp above.
+                  Source: company profile. For all inquiries, contact
+                  {" "}{CONTACT.name} through the channels above.
                 </p>
               </div>
             </div>

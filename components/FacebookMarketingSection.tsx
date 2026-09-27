@@ -42,7 +42,7 @@ export function FacebookMarketingSection() {
           eyebrow="Active Project Updates & Set-ups"
           title={
             <>
-              Follow recent set-ups on the{" "}
+              Field updates from the{" "}
               <span className="gradient-text-cyan">
                 A. Hydromex Facebook page.
               </span>
@@ -50,11 +50,11 @@ export function FacebookMarketingSection() {
           }
           description={
             <>
-              <span className="text-clean">{SOCIAL.pageName}</span> is where
-              recent set-ups, project posts, and live updates appear. Follow
-              the active Facebook page for marketing materials and field
-              media &mdash; use this site for a premium overview of the
-              services, technology, projects, and team behind them.
+              <span className="text-clean">{SOCIAL.pageName}</span> shares
+              field updates and project materials on Facebook. This site
+              complements those updates with services, technology, projects,
+              and team information. All inquiry links connect you with
+              {" "}{CONTACT.name}.
             </>
           }
         />
@@ -86,17 +86,17 @@ export function FacebookMarketingSection() {
               <div className="relative flex flex-col gap-4 border-t border-white/10 p-5 sm:p-6 lg:border-l lg:border-t-0 lg:p-8">
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
-                    Follow the page · Message the team
+                    Facebook updates · Contact Nequi
                   </div>
                   <h3 className="text-display mt-2 text-balance text-xl font-semibold leading-snug text-white sm:text-2xl">
-                    Follow active Facebook updates. Connect through
-                    Messenger or WhatsApp.
+                    Explore field updates. Connect with Nequi through
+                    Facebook or WhatsApp.
                   </h3>
                   <p className="mt-3 text-[14px] leading-relaxed text-silver/95">
-                    Follow A. Hydromex STP &amp; AOP Wastewater Solutions PH
-                    for recent set-ups and project materials. Message us on
-                    Facebook for inquiries &mdash; or use Messenger,
-                    WhatsApp, or email below for the fastest reply.
+                    These field materials come from A. Hydromex STP &amp; AOP
+                    Wastewater Solutions PH on Facebook. For inquiries,
+                    contact {CONTACT.name} through Facebook / Messenger,
+                    WhatsApp, or email below.
                   </p>
                 </div>
 
@@ -104,13 +104,13 @@ export function FacebookMarketingSection() {
                   <ChannelButton
                     href={SOCIAL.facebookUrl}
                     icon={FacebookIcon}
-                    label="Visit Facebook Page"
+                    label="Contact Nequi on Facebook"
                     accent
                   />
                   <ChannelButton
                     href={SOCIAL.messengerUrl}
                     icon={MessengerIcon}
-                    label="Message on Messenger"
+                    label="Nequi’s Facebook / Messenger"
                   />
                   <ChannelButton
                     href={SOCIAL.whatsappUrl}
@@ -187,7 +187,7 @@ function FacebookBadge({ asset }: { asset: FacebookAsset }) {
       href={SOCIAL.facebookUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Open ${SOCIAL.pageName} on Facebook`}
+      aria-label={`Contact ${CONTACT.name} on Facebook`}
       className="relative inline-flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full ring-1 ring-cyan/40 transition-transform hover:scale-105"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -223,8 +223,8 @@ function EmptyVisualPanel() {
         A. Hydromex STP &amp; AOP Wastewater Solutions PH
       </h4>
       <p className="relative mt-3 max-w-md text-[14px] leading-relaxed text-silver/95">
-        Recent set-ups, project posts, and direct messages happen on the
-        Facebook page. Open the page for live updates.
+        Facebook complements this site with field updates and project
+        materials. Contact {CONTACT.name} for project inquiries.
       </p>
       <a
         href={SOCIAL.facebookUrl}
@@ -232,7 +232,7 @@ function EmptyVisualPanel() {
         rel="noopener noreferrer"
         className="relative mt-5 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan hover:text-clean"
       >
-        Open Facebook Page
+        Contact Nequi on Facebook
         <ArrowUpRight className="size-3.5" />
       </a>
     </div>
@@ -242,7 +242,7 @@ function EmptyVisualPanel() {
 function FacebookFeaturedTile({ asset }: { asset: FacebookAsset }) {
   return (
     <a
-      href={asset.sourceUrl ?? SOCIAL.facebookUrl}
+      href={SOCIAL.facebookUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-navy-2/40"
@@ -294,7 +294,7 @@ function FacebookSupportingTile({
 }) {
   return (
     <a
-      href={asset.sourceUrl ?? SOCIAL.facebookUrl}
+      href={SOCIAL.facebookUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="card-lift group relative block overflow-hidden rounded-2xl border border-white/10 bg-navy-2/45"
@@ -324,7 +324,7 @@ function FacebookSupportingTile({
 function FacebookProofChip({ asset }: { asset: FacebookAsset }) {
   return (
     <a
-      href={asset.sourceUrl ?? SOCIAL.facebookUrl}
+      href={SOCIAL.facebookUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="group inline-flex items-center gap-3 rounded-xl border border-white/10 bg-navy-2/55 p-2 pr-3 transition-colors hover:border-cyan/40"
@@ -343,7 +343,7 @@ function FacebookProofChip({ asset }: { asset: FacebookAsset }) {
           {asset.caption ?? "Supporting material"}
         </div>
         <div className="mt-0.5 font-mono text-[9px] uppercase tracking-[0.18em] text-silver/70 group-hover:text-cyan/90">
-          View on Facebook →
+          Inquire through Nequi →
         </div>
       </div>
     </a>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
+import { CONTACT } from "@/lib/data";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s · A. Hydromex STP & AOP",
   },
   description:
-    "Advanced STP, AOP wastewater treatment, rehabilitation, installation, and maintenance support for hospitals, industries, commercial facilities, resorts, LGUs, and institutions in the Philippines. Message us on Facebook for the fastest reply.",
+    `Advanced STP, AOP wastewater treatment, rehabilitation, installation, and maintenance support in the Philippines. Inquiries: ${CONTACT.name}, ${CONTACT.primaryEmail}, ${CONTACT.phone}.`,
   keywords: [
     "A. Hydromex",
     "AHydromexSTP",
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "A. Hydromex STP & AOP Wastewater Solutions PH",
     description:
-      "Advanced STP and AOP wastewater treatment in the Philippines. Message us on Facebook for the fastest reply.",
+      `Advanced STP and AOP wastewater treatment in the Philippines. Contact ${CONTACT.name} for inquiries.`,
   },
   robots: { index: true, follow: true },
 };

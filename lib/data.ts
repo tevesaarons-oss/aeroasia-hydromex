@@ -365,26 +365,23 @@ export const NAV_LINKS = [
   { href: "/#contact", label: "Contact" },
 ];
 
+/** Sole public inquiry contact for Aeroasia and the separate construction panel. */
 export const CONTACT = {
-  primaryEmail: "payganejrphilip@gmail.com",
-  /** Display phone, as shown on the Facebook business page. */
-  phone: "0906 788 7601",
-  /** E.164 form for tel: and wa.me/ URLs. */
-  phoneE164: "+639067887601",
-  whatsappDisplay: "+63 906 788 7601",
+  name: "Nequi Tse Cepada",
+  primaryEmail: "nequicepada88@gmail.com",
+  phone: "+63 917 878 1588",
+  phoneE164: "+639178781588",
+  whatsappDisplay: "+63 917 878 1588",
+  facebookUrl: "https://www.facebook.com/nequineq",
 };
 
-/**
- * A. Hydromex STP & AOP Wastewater Solutions PH — active Facebook business
- * presence. This is the primary marketing channel; the website routes leads
- * toward Messenger, WhatsApp, and the email above.
- */
+/** All public social/contact links route to Nequi; media provenance is separate. */
 export const SOCIAL = {
   pageName: "A. Hydromex STP & AOP Wastewater Solutions PH",
-  facebookUrl: "https://www.facebook.com/AHydromexSTP",
-  messengerUrl: "https://m.me/AHydromexSTP",
-  whatsappUrl: "https://wa.me/639067887601",
-  emailUrl: "mailto:payganejrphilip@gmail.com",
+  facebookUrl: CONTACT.facebookUrl,
+  messengerUrl: CONTACT.facebookUrl,
+  whatsappUrl: `https://wa.me/${CONTACT.phoneE164.slice(1)}`,
+  emailUrl: `mailto:${CONTACT.primaryEmail}`,
 };
 
 export { Lightbulb };

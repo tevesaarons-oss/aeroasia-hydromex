@@ -13,6 +13,7 @@ import { ProjectsTimeline } from "@/components/ProjectsTimeline";
 import { AboutSection } from "@/components/AboutSection";
 import { ComplianceSection } from "@/components/ComplianceSection";
 import { CTASection } from "@/components/CTASection";
+import { ConstructionServicesSection } from "@/components/ConstructionServicesSection";
 import { ContactSection } from "@/components/ContactSection";
 import { FacebookMarketingSection } from "@/components/FacebookMarketingSection";
 import { SectionDivider } from "@/components/SectionDivider";
@@ -91,6 +92,7 @@ export default function Home() {
         <ComplianceSection />
         <CTASection />
         <ContactSection />
+        <ConstructionServicesSection />
       </main>
       <Footer />
     </>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Mail, Phone, FileText, Download } from "lucide-react";
 import { CONTACT, NAV_LINKS, SERVICES, SOCIAL } from "@/lib/data";
 import { COMPANY_MATERIALS } from "@/lib/projects";
@@ -92,7 +93,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="hover:text-white"
               >
-                {SOCIAL.pageName}
+                {CONTACT.name}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
@@ -126,6 +127,13 @@ export function Footer() {
             </li>
           </ul>
         </div>
+      </div>
+
+      <div className="relative mx-auto mt-8 max-w-7xl px-5 text-xs leading-relaxed text-silver/75 sm:px-8">
+        <Link href="/#construction-services" className="transition-colors hover:text-cyan">
+          Construction inquiries · J’NER CEPADA CONSTRUCTION
+        </Link>
+        <span> · Contact {CONTACT.name}. Separate from Aeroasia’s wastewater project portfolio.</span>
       </div>
 
       {/* Company materials — downloadable source PDFs */}
