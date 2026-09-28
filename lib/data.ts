@@ -380,6 +380,7 @@ export const SOCIAL = {
   pageName: "A. Hydromex STP & AOP Wastewater Solutions PH",
   facebookUrl: CONTACT.facebookUrl,
   messengerUrl: CONTACT.facebookUrl,
+  viberUrl: `viber://chat?number=${encodeURIComponent(CONTACT.phoneE164)}`,
   whatsappUrl: `https://wa.me/${CONTACT.phoneE164.slice(1)}`,
   emailUrl: `mailto:${CONTACT.primaryEmail}`,
 };

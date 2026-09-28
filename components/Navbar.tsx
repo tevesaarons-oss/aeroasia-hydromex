@@ -6,7 +6,7 @@ import { Menu, X, Mail } from "lucide-react";
 import { NAV_LINKS, SOCIAL, CONTACT } from "@/lib/data";
 import { cn } from "@/lib/cn";
 import { BrandMark } from "./BrandMark";
-import { FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
+import { ViberIcon, FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
 
 /** Internal absolute routes use next/link; hash-only and external use <a>. */
 function NavItem({
@@ -76,19 +76,17 @@ export function Navbar() {
             href={SOCIAL.facebookUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="A. Hydromex on Facebook"
+            aria-label="Contact Nequi on Facebook"
             className="btn-ghost flex size-10 items-center justify-center rounded-full"
           >
             <FacebookIcon className="size-4" />
           </a>
           <a
-            href={SOCIAL.facebookUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={SOCIAL.viberUrl}
             className="btn-primary inline-flex h-10 items-center gap-2 rounded-full px-5 text-sm"
           >
-            <MessengerIcon className="size-4" />
-            Message on Facebook
+            <ViberIcon className="size-4" />
+            Message on Viber
           </a>
         </div>
 
@@ -126,24 +124,21 @@ export function Navbar() {
 
           <li className="mt-3">
             <a
-              href={SOCIAL.facebookUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={SOCIAL.viberUrl}
               onClick={() => setOpen(false)}
               className="btn-primary inline-flex h-11 w-full items-center justify-center gap-2 rounded-full px-5 text-sm"
             >
-              <FacebookIcon className="size-4" />
-              Message us on Facebook
+              <ViberIcon className="size-4" />
+              Message Nequi on Viber
             </a>
             <p className="mt-2 px-1 text-[11px] leading-relaxed text-silver/80">
-              The Facebook page is the active marketing and inquiry
-              channel.
+              Viber is Nequi&rsquo;s preferred contact channel: {CONTACT.phone}.
             </p>
           </li>
 
           <li className="mt-3 border-t border-white/10 pt-3">
             <div className="px-1 pb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan/85">
-              Connect through Messenger or WhatsApp
+              Other ways to contact Nequi
             </div>
             <ul className="grid grid-cols-2 gap-2">
               <SocialMenuLink
@@ -168,7 +163,7 @@ export function Navbar() {
               <SocialMenuLink
                 href={SOCIAL.facebookUrl}
                 icon={FacebookIcon}
-                label="FB Page"
+                label="Facebook"
                 onClick={() => setOpen(false)}
               />
             </ul>

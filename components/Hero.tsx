@@ -6,7 +6,7 @@ import { HeroVisual } from "./HeroVisual";
 import { VideoPanel } from "./VideoPanel";
 import { STATS, SOCIAL } from "@/lib/data";
 import { mediaAssets } from "@/lib/media";
-import { FacebookIcon } from "./BrandIcons";
+import { ViberIcon } from "./BrandIcons";
 
 export function Hero() {
   return (
@@ -76,13 +76,11 @@ export function Hero() {
             className="mt-7 flex flex-wrap items-center gap-3"
           >
             <a
-              href={SOCIAL.facebookUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={SOCIAL.viberUrl}
               className="btn-primary inline-flex h-12 items-center gap-2 rounded-full px-7 text-sm"
             >
-              <FacebookIcon className="size-4" />
-              Message us on Facebook
+              <ViberIcon className="size-4" />
+              Message Nequi on Viber
             </a>
             <a
               href="#technology"

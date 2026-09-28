@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s · A. Hydromex STP & AOP",
   },
   description:
-    `Advanced STP, AOP wastewater treatment, rehabilitation, installation, and maintenance support in the Philippines. Inquiries: ${CONTACT.name}, ${CONTACT.primaryEmail}, ${CONTACT.phone}.`,
+    `Advanced STP, AOP wastewater treatment, rehabilitation, installation, and maintenance support in the Philippines. Inquiries: ${CONTACT.name}, Viber (preferred) ${CONTACT.phone}, ${CONTACT.primaryEmail}.`,
   keywords: [
     "A. Hydromex",
     "AHydromexSTP",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "A. Hydromex STP & AOP Wastewater Solutions PH",
     description:
-      `Advanced STP and AOP wastewater treatment in the Philippines. Contact ${CONTACT.name} for inquiries.`,
+      `Advanced STP and AOP wastewater treatment in the Philippines. Contact ${CONTACT.name} on Viber for inquiries.`,
   },
   robots: { index: true, follow: true },
 };

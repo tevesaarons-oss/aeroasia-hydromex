@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SOCIAL } from "@/lib/data";
-import { FacebookIcon, WhatsAppIcon } from "./BrandIcons";
+import { ViberIcon, WhatsAppIcon } from "./BrandIcons";
 
 export function CTASection() {
   return (
@@ -29,21 +29,18 @@ export function CTASection() {
                 <p className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-silver/95">
                   Whether you&rsquo;re building a new facility, rehabilitating
                   an aging STP, preparing for DENR sampling, or exploring AOP
-                  upgrades &mdash; message us on Facebook, or connect through
-                  Messenger or WhatsApp for the fastest reply. Follow the
-                  active Facebook page for recent set-ups.
+                  upgrades &mdash; contact Nequi on Viber, the preferred channel
+                  for inquiries. WhatsApp, Facebook, phone, and email are also available.
                 </p>
               </div>
 
               <div className="flex flex-col gap-3">
                 <a
-                  href={SOCIAL.facebookUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={SOCIAL.viberUrl}
                   className="btn-primary inline-flex h-13 items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold"
                 >
-                  <FacebookIcon className="size-4.5" />
-                  Message on Facebook
+                  <ViberIcon className="size-4.5" />
+                  Message Nequi on Viber
                   <ArrowRight className="size-4.5" />
                 </a>
                 <a

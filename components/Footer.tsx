@@ -3,7 +3,7 @@ import { Mail, Phone, FileText, Download } from "lucide-react";
 import { CONTACT, NAV_LINKS, SERVICES, SOCIAL } from "@/lib/data";
 import { COMPANY_MATERIALS } from "@/lib/projects";
 import { BrandMark } from "./BrandMark";
-import { FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
+import { ViberIcon, FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
 
 export function Footer() {
   return (
@@ -30,7 +30,9 @@ export function Footer() {
           </div>
 
           {/* Primary social/contact channel row */}
+          <p className="mt-4 text-xs text-silver/90">{CONTACT.name} prefers Viber for inquiries.</p>
           <ul className="mt-6 flex flex-wrap gap-2">
+            <SocialPill href={SOCIAL.viberUrl} icon={ViberIcon} label="Viber · Preferred" />
             <SocialPill
               href={SOCIAL.facebookUrl}
               icon={FacebookIcon}
@@ -85,6 +87,12 @@ export function Footer() {
             Contact
           </h4>
           <ul className="mt-4 space-y-3 text-sm text-silver/95">
+            <li className="flex items-start gap-2.5">
+              <ViberIcon className="mt-0.5 size-4 shrink-0 text-cyan/80" />
+              <a href={SOCIAL.viberUrl} className="hover:text-white">
+                Viber (preferred) · {CONTACT.phone}
+              </a>
+            </li>
             <li className="flex items-start gap-2.5">
               <FacebookIcon className="mt-0.5 size-4 shrink-0 text-cyan/80" />
               <a
@@ -199,8 +207,8 @@ function SocialPill({
     <li>
       <a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={href.startsWith("https:") ? "_blank" : undefined}
+        rel={href.startsWith("https:") ? "noopener noreferrer" : undefined}
         className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-silver/95 transition-colors hover:border-cyan/40 hover:bg-cyan/10 hover:text-cyan"
         aria-label={`Open ${label}`}
       >

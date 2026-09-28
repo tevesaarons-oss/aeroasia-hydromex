@@ -11,7 +11,7 @@ import {
 import { Reveal } from "./Reveal";
 import { CONTACT, SOCIAL } from "@/lib/data";
 import { cn } from "@/lib/cn";
-import { FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
+import { ViberIcon, FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -70,12 +70,10 @@ export function ContactSection() {
                   <p className="mt-2 text-[14px] leading-relaxed text-clean/90">
                     Tell {CONTACT.name} about your facility. Connect via{" "}
                     <a
-                      href={SOCIAL.messengerUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={SOCIAL.viberUrl}
                       className="text-cyan hover:text-clean"
                     >
-                      Messenger
+                      Viber (preferred)
                     </a>{" "}
                     or{" "}
                     <a
@@ -177,12 +175,25 @@ export function ContactSection() {
           <Reveal delay={0.05}>
             <div className="grid gap-4">
               <ContactChannel
-                icon={FacebookIcon}
-                title={`Contact ${CONTACT.name}`}
+                icon={ViberIcon}
+                title="Viber · Preferred"
                 code="CH-01 · Primary"
+                href={SOCIAL.viberUrl}
+                cta="Message Nequi on Viber"
+                accent
+              >
+                <p className="text-[13.5px] leading-relaxed text-silver/95">
+                  {CONTACT.name} prefers Viber for all inquiries: {CONTACT.phone}.
+                  Open the Viber app, or add this number in Viber to start a chat.
+                </p>
+              </ContactChannel>
+
+              <ContactChannel
+                icon={FacebookIcon}
+                title={`Contact ${CONTACT.name} on Facebook`}
+                code="CH-02"
                 href={SOCIAL.facebookUrl}
                 cta="Contact Nequi on Facebook"
-                accent
               >
                 <p className="text-[13.5px] leading-relaxed text-silver/95">
                   {CONTACT.name} is the contact for all inquiries. Send your
@@ -193,7 +204,7 @@ export function ContactSection() {
               <ContactChannel
                 icon={MessengerIcon}
                 title="Chat on Messenger"
-                code="CH-02"
+                code="CH-03"
                 href={SOCIAL.messengerUrl}
                 cta="Open Nequi’s Facebook / Messenger"
               >
@@ -206,7 +217,7 @@ export function ContactSection() {
               <ContactChannel
                 icon={WhatsAppIcon}
                 title="WhatsApp"
-                code="CH-03"
+                code="CH-04"
                 href={SOCIAL.whatsappUrl}
                 cta={`Chat ${CONTACT.whatsappDisplay}`}
               >
@@ -222,7 +233,7 @@ export function ContactSection() {
               <ContactChannel
                 icon={Phone}
                 title="Phone"
-                code="CH-04"
+                code="CH-05"
                 href={`tel:${CONTACT.phoneE164}`}
                 cta={`Call ${CONTACT.phone}`}
               >
@@ -234,7 +245,7 @@ export function ContactSection() {
               <ContactChannel
                 icon={Mail}
                 title="Email"
-                code="CH-05"
+                code="CH-06"
                 href={`mailto:${CONTACT.primaryEmail}`}
                 cta="Send Email Inquiry"
               >

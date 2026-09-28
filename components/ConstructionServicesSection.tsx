@@ -1,7 +1,7 @@
 import { Mail } from "lucide-react";
 import Image from "next/image";
 import { CONTACT, SOCIAL } from "@/lib/data";
-import { FacebookIcon, WhatsAppIcon } from "./BrandIcons";
+import { ViberIcon, FacebookIcon, WhatsAppIcon } from "./BrandIcons";
 import { Reveal } from "./Reveal";
 
 export function ConstructionServicesSection() {
@@ -29,8 +29,8 @@ export function ConstructionServicesSection() {
                   J’NER CEPADA CONSTRUCTION
                 </h2>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-silver/90">
-                  For construction service inquiries, contact {CONTACT.name} to
-                  discuss your requirements. Please identify J’NER CEPADA
+                  For construction service inquiries, contact {CONTACT.name} on
+                  Viber (preferred) at {CONTACT.phone} to discuss your requirements. Please identify J’NER CEPADA
                   CONSTRUCTION in your message.
                 </p>
                 <p className="mt-2 max-w-2xl text-xs leading-relaxed text-silver/70">
@@ -40,11 +40,12 @@ export function ConstructionServicesSection() {
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {[
+                    { href: SOCIAL.viberUrl, label: "Viber · Preferred", icon: ViberIcon },
                     { href: SOCIAL.facebookUrl, label: "Facebook / Messenger", icon: FacebookIcon },
                     { href: SOCIAL.whatsappUrl, label: "WhatsApp", icon: WhatsAppIcon },
                     { href: `${SOCIAL.emailUrl}?subject=${encodeURIComponent("J’NER CEPADA CONSTRUCTION inquiry")}`, label: "Email Nequi", icon: Mail },
                   ].map(({ href, label, icon: Icon }) => (
-                    <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-xs text-clean transition-colors hover:border-cyan/40 hover:text-cyan">
+                    <a key={label} href={href} target={href.startsWith("https:") ? "_blank" : undefined} rel={href.startsWith("https:") ? "noopener noreferrer" : undefined} className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-xs text-clean transition-colors hover:border-cyan/40 hover:text-cyan">
                       <Icon className="size-4" />
                       {label}
                     </a>

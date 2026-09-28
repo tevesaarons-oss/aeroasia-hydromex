@@ -2,7 +2,7 @@ import { Mail, ArrowUpRight, Radio } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import { CONTACT, SOCIAL } from "@/lib/data";
-import { FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
+import { ViberIcon, FacebookIcon, MessengerIcon, WhatsAppIcon } from "./BrandIcons";
 import {
   enabledFacebookMedia,
   facebookMediaFor,
@@ -89,23 +89,27 @@ export function FacebookMarketingSection() {
                     Facebook updates · Contact Nequi
                   </div>
                   <h3 className="text-display mt-2 text-balance text-xl font-semibold leading-snug text-white sm:text-2xl">
-                    Explore field updates. Connect with Nequi through
-                    Facebook or WhatsApp.
+                    Explore field updates. Contact Nequi on Viber.
                   </h3>
                   <p className="mt-3 text-[14px] leading-relaxed text-silver/95">
                     These field materials come from A. Hydromex STP &amp; AOP
                     Wastewater Solutions PH on Facebook. For inquiries,
-                    contact {CONTACT.name} through Facebook / Messenger,
-                    WhatsApp, or email below.
+                    contact {CONTACT.name} on Viber (preferred), or use
+                    Facebook / Messenger, WhatsApp, or email below.
                   </p>
                 </div>
 
                 <div className="grid gap-2">
                   <ChannelButton
+                    href={SOCIAL.viberUrl}
+                    icon={ViberIcon}
+                    label="Viber · Preferred"
+                    accent
+                  />
+                  <ChannelButton
                     href={SOCIAL.facebookUrl}
                     icon={FacebookIcon}
                     label="Contact Nequi on Facebook"
-                    accent
                   />
                   <ChannelButton
                     href={SOCIAL.messengerUrl}

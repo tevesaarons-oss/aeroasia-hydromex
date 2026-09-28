@@ -49,3 +49,6 @@ export function WhatsAppIcon({ className, ...props }: IconProps) {
     </svg>
   );
 }
+
+/** Neutral chat glyph for the Viber contact action. */
+export { MessageCircle as ViberIcon } from "lucide-react";
