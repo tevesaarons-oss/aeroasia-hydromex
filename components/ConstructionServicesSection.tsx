@@ -1,4 +1,5 @@
 import { Mail } from "lucide-react";
+import Image from "next/image";
 import { CONTACT, SOCIAL } from "@/lib/data";
 import { FacebookIcon, WhatsAppIcon } from "./BrandIcons";
 import { Reveal } from "./Reveal";
@@ -12,7 +13,17 @@ export function ConstructionServicesSection() {
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-silver/80">
               Construction Services
             </p>
-            <div className="mt-3 grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+            <div className="mt-4 grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-center">
+              <div className="w-full max-w-sm overflow-hidden rounded-xl border border-white/15 lg:max-w-none">
+                <Image
+                  src="/assets/jner/jner-cepada-construction-logo.png"
+                  alt="J’NER Cepada Construction logo"
+                  width={1536}
+                  height={1024}
+                  sizes="(min-width: 1024px) 280px, (min-width: 480px) 384px, 100vw"
+                  className="h-auto w-full object-contain"
+                />
+              </div>
               <div>
                 <h2 id="construction-heading" className="text-display text-xl font-semibold text-clean sm:text-2xl">
                   J’NER CEPADA CONSTRUCTION
@@ -27,18 +38,18 @@ export function ConstructionServicesSection() {
                   this site belong to Aeroasia-Hydromex. They are not presented
                   as J’NER’s project portfolio or credentials.
                 </p>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  { href: SOCIAL.facebookUrl, label: "Facebook / Messenger", icon: FacebookIcon },
-                  { href: SOCIAL.whatsappUrl, label: "WhatsApp", icon: WhatsAppIcon },
-                  { href: `${SOCIAL.emailUrl}?subject=${encodeURIComponent("J’NER CEPADA CONSTRUCTION inquiry")}`, label: "Email Nequi", icon: Mail },
-                ].map(({ href, label, icon: Icon }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-xs text-clean transition-colors hover:border-cyan/40 hover:text-cyan">
-                    <Icon className="size-4" />
-                    {label}
-                  </a>
-                ))}
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {[
+                    { href: SOCIAL.facebookUrl, label: "Facebook / Messenger", icon: FacebookIcon },
+                    { href: SOCIAL.whatsappUrl, label: "WhatsApp", icon: WhatsAppIcon },
+                    { href: `${SOCIAL.emailUrl}?subject=${encodeURIComponent("J’NER CEPADA CONSTRUCTION inquiry")}`, label: "Email Nequi", icon: Mail },
+                  ].map(({ href, label, icon: Icon }) => (
+                    <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-xs text-clean transition-colors hover:border-cyan/40 hover:text-cyan">
+                      <Icon className="size-4" />
+                      {label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
